@@ -13,7 +13,7 @@ const config: Config = {
         poppins: ['"Poppins"', "sans-serif"],
       },
       colors: {
-        background: "var(--background)",
+        background: "#FFFFFF",
         foreground: "var(--foreground)",
       },
     },
