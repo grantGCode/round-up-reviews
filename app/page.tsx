@@ -1,9 +1,18 @@
 import React from 'react'
+import Product from '../components/Product'
 
-const HomePage = () => {
+const Home = () => {
   return (
-    <div>Home Page</div>
+    <div>
+      <div id='hero'>
+        <p>Hi Janet,</p>
+        <p>Please Let Us Know</p>
+        <p>What You Think of Your Jacket.</p>
+        <p>We Appreciate Your Feedback!</p>
+      </div>
+      <Product />
+    </div>
   )
 }
 
-export default HomePage
+export default Home
