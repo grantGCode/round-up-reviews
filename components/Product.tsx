@@ -4,23 +4,21 @@ import JacketOne from '../public/JacketOne.jpg'
 import JacketTwo from '../public/JacketTwo.jpg'
 import Button from '../components/button'
 
-function Product() {
-  return (
+export default function Product() {
+    return (
     <div>
         <ul>
-            <li>
-                <Image src={JacketOne} alt='Jacket One' />
-                <h4>ROSA Jacket</h4>
-                <Button>Rate</Button>
+            <li className='flex flex-col justify-center items-center'>
+                <Image className='shadow' src={JacketOne} alt='Jacket One' />
+                <h4 className='mt-10'>ROSA Jacket</h4>
+                <Button className='mt-5'>Rate</Button>
             </li>
-            <li>
-                <Image src={JacketTwo} alt='Jacket Two' />
-                <h4>ROSA Jacket</h4>
-                <Button>Rate</Button>
+            <li className='flex flex-col justify-center items-center mt-10'>
+                <Image className='shadow' src={JacketTwo} alt='Jacket Two' />
+                <h4 className='mt-10'>ROSA Jacket</h4>
+                <Button className='mt-5'>Rate</Button>
             </li>
         </ul>
     </div>
   )
 }
-
-export default Product
