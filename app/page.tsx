@@ -1,5 +1,7 @@
-import React from 'react'
-import Product from '../components/Product'
+import React from 'react';
+import Image from 'next/image';
+import BreakLine from '../public/brakeLineHome.png';
+import Product from '../components/Product';
 
 const Home = () => {
   return (
@@ -10,6 +12,7 @@ const Home = () => {
         <p>What You Think of Your Jacket.</p>
         <p>We Appreciate Your Feedback!</p>
       </div>
+      <Image src={BreakLine} alt='break line' />
       <Product />
     </div>
   )
