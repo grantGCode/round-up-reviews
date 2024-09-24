@@ -14,7 +14,7 @@ function ThankYouModal() {
             <p className='font-medium'>other selections at your leisure.</p>
             <Link
                 className='mt-8 px-4 py-2 bg-[#005FF6] text-white rounded hover:bg-blue-700'
-                href='/'
+                href='https://secure-swift-shoppers-cart.netlify.app/'
             >
                 Return to ROSA
             </Link>
