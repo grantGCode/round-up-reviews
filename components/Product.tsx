@@ -4,30 +4,36 @@ import Image from 'next/image'
 import JacketOne from '../public/JacketOne.jpg'
 import JacketTwo from '../public/JacketTwo.jpg'
 
-// import ProductModal from '../components/ProductModal';
 
-/*type SearchParamProps = {
-  searchParams: Record<string, string> | null | undefined;
-};*/
-
-export default function Product(/*{ searchParams }: SearchParamProps*/) {
-  /*const show = searchParams?.show;*/
-
+export default function Product() {
   return (
     <div>
         <ul>
             <li className='flex flex-col justify-center items-center'>
                 <Image className='shadow' src={JacketOne} alt='Jacket One' />
-                <h4 className='mt-10'>ROSA Jacket</h4>
-                <Link className='mt-5' href='/?show=true'>Rate</Link>
+                <h1 className='mt-10 font-bold'>ROSA Jacket</h1>
+                <Link 
+                  className='mt-5 px-4 py-2 bg-[#005FF6] text-white rounded hover:bg-blue-700'
+                  href='/?show=true'
+                >
+                  Rate
+                </Link>
             </li>
             <li className='flex flex-col justify-center items-center'>
-                <Image className='shadow'src={JacketTwo} alt='Jacket Two' />
-                <h4 className='mt-10'>ROSA Jacket</h4>
-                <Link className='mt-5' href='/?show=true'>Rate</Link>
+                <Image 
+                  className='shadow'
+                  src={JacketTwo} 
+                  alt='Jacket Two'
+                />
+                <h1 className='mt-10 font-bold'>ROSA Jacket</h1>
+                <Link 
+                  className='mt-5 px-4 py-2 bg-[#005FF6] text-white rounded hover:bg-blue-700'
+                  href='/?show=true'
+                >
+                  Rate
+                </Link>
             </li>
         </ul>
-        {/* {show && <ProductModal />} */}
     </div>
   )
 }
