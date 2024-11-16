@@ -1,4 +1,3 @@
-
 import mysql from 'mysql2';
   
 const userPassword = process.env.DB_PASSWORD
