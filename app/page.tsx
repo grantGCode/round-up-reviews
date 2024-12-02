@@ -20,7 +20,7 @@ const Home = ({ searchParams }: SearchParamProps) => {
         <p>We Appreciate Your Feedback!</p>
       </div>
       <Image className='py-20' src={BreakLine} alt='break line' />
-      <Product data={[]} />
+      <Product />
       {show && <ThankYouModal />}
     </div>
   )
