@@ -1,8 +1,7 @@
 import Image from 'next/image';
 import BreakLine from '../public/brakeLineHome.png';
 import Product from '../components/Product';
-// import ProductModal from '../components/ProductModal';
-import ThankYouModal from '../components/ThankYouModal';
+import ProductModal from '../components/ProductModal';
 
 type SearchParamProps = {
   searchParams: Record<string, string> | null | undefined;
@@ -21,7 +20,7 @@ const Home = ({ searchParams }: SearchParamProps) => {
       </div>
       <Image className='py-20' src={BreakLine} alt='break line' />
       <Product />
-      {show && <ThankYouModal />}
+      {show && <ProductModal />}
     </div>
   )
 }
