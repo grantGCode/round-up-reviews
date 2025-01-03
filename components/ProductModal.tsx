@@ -2,9 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import VectorX from '../public/Vector-X.png';
 import JacketOne from '../public/JacketOne.jpg';
-import StarYellow from '../public/StarYellow.png';
-import StarGray from '../public/StarGray.png';
-import Button from './button';
+// import StarYellow from '../public/StarYellow.png';
+// import StarGray from '../public/StarGray.png';
+// import Button from './button';
 
 function ProductModal() {
   return (
@@ -17,7 +17,7 @@ function ProductModal() {
             <Image className='shadow' src={JacketOne} alt='Jacket One' />
             <h4 className='mt-10'>ROSA Jacket</h4>
             <h5>Rating</h5>
-            <p>
+            {/* <p>
               Let us know what your experience
               with your product has been like 
               for you.
@@ -37,7 +37,7 @@ function ProductModal() {
               autoCapitalize="off"
               autoCorrect="off" 
             />
-            <Button>Submit</Button>
+            <Button>Submit</Button> */}
           </div>
         </div>
     </div>

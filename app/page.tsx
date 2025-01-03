@@ -1,14 +1,20 @@
 import Image from 'next/image';
 import BreakLine from '../public/brakeLineHome.png';
-import Product from '../components/Product';
+import ProductsList from '../components/ProductsList';
 import ProductModal from '../components/ProductModal';
+import type { SearchParamProps, productInfo } from './types/common'
 
-type SearchParamProps = {
-  searchParams: Record<string, string> | null | undefined;
-};
-
-const Home = ({ searchParams }: SearchParamProps) => {
+export default async function Home({ 
+  searchParams,
+}: SearchParamProps, ) {
   const show = searchParams?.show;
+  const res = await fetch('http://localhost:3000/api/Products', {
+    next: {
+      revalidate: 30
+    }
+  });
+  const data: productInfo[] = await res.json();
+
   return (
     <div className='flex flex-col justify-center items-center'>
       <div 
@@ -19,10 +25,8 @@ const Home = ({ searchParams }: SearchParamProps) => {
         <p>We Appreciate Your Feedback!</p>
       </div>
       <Image className='py-20' src={BreakLine} alt='break line' />
-      <Product />
+      <ProductsList products={data} />
       {show && <ProductModal />}
     </div>
   )
 }
-
-export default Home
