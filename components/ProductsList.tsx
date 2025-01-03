@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import type { productInfo, ProductsListProps } from '../app/types/common';
 
-const ProductsList: React.FC<ProductsListProps> = ({ products }) => {
+const ProductsList: React.FC<ProductsListProps> = ({ list }) => {
 
   return (
     <div>
       <ul>
-        {products.map((product: productInfo) => (
+        {list.map((product: productInfo) => (
             <li key={product.id} className='flex flex-col justify-center items-center'>
               <h1 className='mt-10 font-bold'>{product.product_name}</h1>
               <p>{product.vender_name}</p>

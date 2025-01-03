@@ -9,5 +9,6 @@ export type productInfo = {
 };
 
 export interface ProductsListProps {
-  products: productInfo[];
-}
+  list: productInfo[];
+};
+
