@@ -1,12 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import VectorX from '../public/Vector-X.png';
-import JacketOne from '../public/JacketOne.jpg';
 // import StarYellow from '../public/StarYellow.png';
 // import StarGray from '../public/StarGray.png';
 // import Button from './button';
+import type { productInfo, ProductsListProps } from '../app/types/common';
 
-function ProductModal() {
+const ProductModal: React.FC<ProductsListProps & productInfo> = ({ list }) => {
+  console.log(list)
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center">
       <div className="p-8 border w-96 shadow-lg bg-[#E5E5E5]">
@@ -14,8 +15,8 @@ function ProductModal() {
             <Image src={VectorX} alt='X'></Image>
           </Link>
           <div className='flex flex-col justify-center items-center'>
-            <Image className='shadow' src={JacketOne} alt='Jacket One' />
-            <h4 className='mt-10'>ROSA Jacket</h4>
+            {/* <Image className='shadow' src={JacketOne} alt='Jacket One' /> */}
+            {/* <h4 className='mt-10'>{list.product_name}</h4> */}
             <h5>Rating</h5>
             {/* <p>
               Let us know what your experience

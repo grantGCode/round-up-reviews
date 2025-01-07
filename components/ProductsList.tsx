@@ -14,6 +14,7 @@ const ProductsList: React.FC<ProductsListProps> = ({ list }) => {
               <Link 
                 className='mt-5 px-4 py-2 bg-[#005FF6] text-white rounded hover:bg-blue-700'
                 href='/?show=true'
+                key={product.id}
               >
                 Rate
               </Link>
