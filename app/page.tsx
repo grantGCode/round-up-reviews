@@ -26,7 +26,7 @@ export default async function Home({
       </div>
       <Image className='py-20' src={BreakLine} alt='break line' />
       <ProductsList list={data} />
-      {show && <ProductModal />}
+      {show && <ProductModal list={data}/>}
     </div>
   )
 }

@@ -2,7 +2,6 @@ import Link from 'next/link'
 import type { productInfo, ProductsListProps } from '../app/types/common';
 
 const ProductsList: React.FC<ProductsListProps> = ({ list }) => {
-
   return (
     <div>
       <ul>
