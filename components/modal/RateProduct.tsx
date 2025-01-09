@@ -1,8 +1,8 @@
 'use client'
-import Button from './button';
+import Button from '../button';
 import Image from 'next/image';
-import StarYellow from '../public/StarYellow.png';
-import StarGray from '../public/StarGray.png';
+import StarYellow from '../../public/StarYellow.png';
+import StarGray from '../../public/StarGray.png';
 
 function RateProduct() {
   return (

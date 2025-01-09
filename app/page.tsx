@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import BreakLine from '../public/brakeLineHome.png';
 import ProductsList from '../components/ProductsList';
-import ProductModal from '../components/ProductModal';
+import ProductModal from '../components/modal/ProductModal';
 import type { SearchParamProps, productInfo } from './types/common'
 
 export default async function Home({ 
