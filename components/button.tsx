@@ -1,10 +1,5 @@
-interface ButtonProps {
-  onClick?: () => void;
-  children: React.ReactNode;
-  className?: string;
-  type?: 'button' | 'submit' | 'reset';
-  disabled?: boolean;
-}
+import type { ButtonProps } from '../app/types/common'
+
 const Button: React.FC<ButtonProps> = ({ onClick, children, className = '', type = 'button', disabled = false }) => {
   return (
     <button
