@@ -1,9 +1,7 @@
+import RateProduct from './RateProduct';
 import Image from 'next/image';
 import Link from 'next/link';
 import VectorX from '../public/Vector-X.png';
-import StarYellow from '../public/StarYellow.png';
-import StarGray from '../public/StarGray.png';
-import Button from './button';
 import type { productInfo, ProductsListProps } from '../app/types/common';
 
 const ProductModal: React.FC<ProductsListProps> = ({ list }) => {
@@ -16,28 +14,7 @@ const ProductModal: React.FC<ProductsListProps> = ({ list }) => {
           </Link>
           <div className='flex flex-col justify-center items-center'>
             {/* <h4 className='mt-10'>{product_name}</h4> */}
-            <h5>Rating</h5>
-            <p>
-              Let us know what your experience
-              with your product has been like 
-              for you.
-            </p>
-            <div id='Stars'className='flex flex-row justify-center items-center'>
-              <Image src={StarYellow} alt={'Yellow Star'}></Image>
-              <Image src={StarYellow} alt={'Yellow Star'}></Image>
-              <Image src={StarYellow} alt={'Yellow Star'}></Image>
-              <Image src={StarGray} alt={'Gray Star'}></Image>
-              <Image src={StarGray} alt={'Gray Star'}></Image>
-            </div>
-            <input
-              className='h-'
-              type="text" 
-              placeholder="Leave a comment (optional)"
-              required
-              autoCapitalize="off"
-              autoCorrect="off" 
-            />
-            <Button>Submit</Button>
+            <RateProduct />
           </div>
         </div>
     </div>
