@@ -1,7 +1,15 @@
 import Link from 'next/link'
-import type { productInfo, ProductsListProps } from '../app/types/common';
+import ProductModal from './modal/ProductModal';
+import type { /*SearchParamProps,*/ productInfo,/* ProductsListProps*/ } from '../app/types/common';
 
-const ProductsList: React.FC<ProductsListProps> = ({ list }) => {
+function ProductsList({
+  list, 
+  searchParams,
+}: {
+    list: productInfo[], 
+    searchParams: { show?: string };
+  }) {
+    const showModal = searchParams?.show === 'true';
   return (
     <div>
       <ul>
@@ -12,13 +20,15 @@ const ProductsList: React.FC<ProductsListProps> = ({ list }) => {
               <h3>Star Rating</h3>
               <Link 
                 className='mt-5 px-4 py-2 bg-[#005FF6] text-white rounded hover:bg-blue-700'
-                href='/?show=true'
+                href={`/?show=true`}
                 key={product.id}
               >
                 Rate
               </Link>
             </li>
-          ))}
+          ),
+      showModal && <ProductModal list={[]}/>
+        )}
       </ul>
     </div>
   )

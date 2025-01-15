@@ -1,5 +1,6 @@
 export type SearchParamProps = {
     searchParams: Record<string, string> | null | undefined;
+    show: boolean | null | undefined
 };
 
 export type productInfo = {
