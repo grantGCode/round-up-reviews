@@ -1,12 +1,17 @@
 export type SearchParamProps = {
     searchParams: Record<string, string> | null | undefined;
-    show: boolean | null | undefined
+    show: boolean | null | undefined;
 };
 
 export type productInfo = {
   id: number;
   product_name: string;
   vender_name: string;
+};
+
+export interface productPrams {
+  show?: string; 
+  productId?: number | string | 0
 };
 
 export interface ProductsListProps {

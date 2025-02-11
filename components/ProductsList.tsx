@@ -1,15 +1,17 @@
 import Link from 'next/link'
 import ProductModal from './modal/ProductModal';
-import type { /*SearchParamProps,*/ productInfo,/* ProductsListProps*/ } from '../app/types/common';
+import type { /*SearchParamProps,*/ productInfo, productPrams,/* ProductsListProps*/ } from '../app/types/common';
 
 function ProductsList({
   list, 
   searchParams,
 }: {
     list: productInfo[], 
-    searchParams: { show?: string };
+    searchParams: productPrams,
   }) {
     const showModal = searchParams?.show === 'true';
+    const selectedProduct = list.find((product: productInfo) => product.id.toString() === searchParams?.productId);
+    console.log(`List: ${selectedProduct}`)
   return (
     <div>
       <ul>
@@ -20,16 +22,22 @@ function ProductsList({
               <h3>Star Rating</h3>
               <Link 
                 className='mt-5 px-4 py-2 bg-[#005FF6] text-white rounded hover:bg-blue-700'
-                href={`/?show=true`}
+                href={`/?show=true&productId=${product.id}`}
                 key={product.id}
+                scroll={false}
               >
                 Rate
               </Link>
             </li>
           ),
-      showModal && <ProductModal list={[]}/>
         )}
       </ul>
+      {
+      showModal && 
+      selectedProduct &&
+      <ProductModal list={[]} params={{
+          id:  selectedProduct.id
+        }}/>}
     </div>
   )
 };
