@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import ProductModal from './modal/ProductModal';
-import type { /*SearchParamProps,*/ productInfo, productPrams,/* ProductsListProps*/ } from '../app/types/common';
+import type { productInfo, productPrams } from '../app/types/common';
 
 function ProductsList({
   list, 

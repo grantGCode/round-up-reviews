@@ -1,13 +1,15 @@
 
+'use client'
+import { useState } from 'react';
 import SeeStarRatings from './SeeStarRatings';
 import SeeComments from './SeeComments';
 import RateProduct from './RateProduct';
 import Image from 'next/image';
 import Link from 'next/link';
 import ArrowLeft from '../../public/Arrow-Left-Icon.png'
-import type { productInfo/*, ProductsListProps*/ } from '../../app/types/common';
+import type { productInfo } from '../../app/types/common';
 
-export default async function ProductModal({ 
+export default function ProductModal({ 
   params,
   list, 
 }: {
@@ -15,8 +17,10 @@ export default async function ProductModal({
   list: productInfo[]
 }) {
   
-  const product = await fetchProductDetails(params.id.toString())
+  const [productID] = useState(params.id);
+
   console.log('Modal:', list.map((product: productInfo) => (product.id)))
+  console.log('Modal: ProductId = ', productID)
 
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center">
@@ -25,7 +29,7 @@ export default async function ProductModal({
             <Image src={ArrowLeft} alt='X'></Image>
           </Link>
           <div className='flex flex-col justify-center'>
-          <p>Product ID: {product.id}</p>
+          <p>Product ID: {params.id}</p>
             {/* <h5 className='mt-10'>{product_vender}</h5> */}
             {/* <h4 className='mt-10'>{product_name}</h4> */}
             <h4>Over All Star Rating</h4>
@@ -36,8 +40,4 @@ export default async function ProductModal({
         </div>
     </div>
   )
-}
-
-async function fetchProductDetails(productId: string) {
-  return { id: productId };
 }
