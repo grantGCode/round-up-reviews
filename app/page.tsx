@@ -9,9 +9,14 @@ export default async function Home({
   searchParams: { show?: string; productId?: string };
 }) {  
   const res = await fetch('http://localhost:3000/api/Products', {
-    next: {
-      revalidate: 30
-    }
+    
+    // cache data
+    cache: 'force-cache' 
+    
+    //Revalidate in 30 sec
+    // next: {
+    //   revalidate: 30
+    // }
   });
   const data: productInfo[] = await res.json();
   return (

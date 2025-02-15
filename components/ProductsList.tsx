@@ -11,7 +11,7 @@ function ProductsList({
   }) {
     const showModal = searchParams?.show === 'true';
     const selectedProduct = list.find((product: productInfo) => product.id.toString() === searchParams?.productId);
-    console.log(`List: ${selectedProduct}`)
+
   return (
     <div>
       <ul>
@@ -35,9 +35,11 @@ function ProductsList({
       {
       showModal && 
       selectedProduct &&
-      <ProductModal list={[]} params={{
+      <ProductModal 
+        params={{
           id:  selectedProduct.id
-        }}/>}
+        }}
+      />}
     </div>
   )
 };

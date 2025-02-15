@@ -1,6 +1,5 @@
-
 'use client'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SeeStarRatings from './SeeStarRatings';
 import SeeComments from './SeeComments';
 import RateProduct from './RateProduct';
@@ -11,16 +10,36 @@ import type { productInfo } from '../../app/types/common';
 
 export default function ProductModal({ 
   params,
-  list, 
 }: {
   params: { id: number }
-  list: productInfo[]
 }) {
   
+  const [productMetaData, setProductMetaData] = useState<productInfo>()
   const [productID] = useState(params.id);
+  
+  useEffect(() => {
+    async function GetProductInfo() {
+      const res = await fetch('http://localhost:3000/api/Products', {
+        // cache data
+        cache: 'force-cache' 
+        
+        //Revalidate in 30 sec
+        // next: {
+        //   revalidate: 30
+        // }
+      });
+      const data: productInfo[] = await res.json();
+      const singleProduct = data.find((product: productInfo) => {
+        if(product.id === productID){
+          return {product}
+        }
+      });
+      setProductMetaData(singleProduct)
+    };
+    GetProductInfo()
+  }, [productID])
 
-  console.log('Modal:', list.map((product: productInfo) => (product.id)))
-  console.log('Modal: ProductId = ', productID)
+  if (productMetaData === undefined) return null
 
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center">
@@ -29,9 +48,8 @@ export default function ProductModal({
             <Image src={ArrowLeft} alt='X'></Image>
           </Link>
           <div className='flex flex-col justify-center'>
-          <p>Product ID: {params.id}</p>
-            {/* <h5 className='mt-10'>{product_vender}</h5> */}
-            {/* <h4 className='mt-10'>{product_name}</h4> */}
+            <h5 className='mt-10'>{productMetaData.vender_name}</h5>
+            <h4 className='mt-10'>{productMetaData.product_name}</h4>
             <h4>Over All Star Rating</h4>
             <SeeStarRatings />
             <SeeComments />
