@@ -43,14 +43,14 @@ export default function ProductModal({
 
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-end justify-center">
-      <div className="p-8 border w-96 shadow-lg rounded-t-[3vw] bg-[#FFFFFF]">
+      <div className="pb-24 p-8 border w-full shadow-lg rounded-t-[3vw] bg-[#FFFFFF]">
           <Link href='/'>
             <Image src={ArrowLeft} alt='X'></Image>
           </Link>
           <div className='flex flex-col justify-center bg-[#FFFFFF]'>
-            <h5 className='mt-10'>{productMetaData.vender_name}</h5>
-            <h4 className='mt-10'>{productMetaData.product_name}</h4>
-            <h4>Over All Star Rating</h4>
+            <h5 className='mt-10 text-10'>{productMetaData.vender_name}</h5>
+            <h4 className='font-bold mt-1 mb-1 text-xl'>{productMetaData.product_name}</h4>
+            <p>{`${3} Star (120 reviews)`}</p>
             <SeeStarRatings />
             <SeeComments />
             <RateProduct />

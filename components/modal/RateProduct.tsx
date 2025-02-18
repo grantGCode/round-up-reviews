@@ -13,13 +13,13 @@ function RateProduct() {
     //     <Image src={GrayVector} alt='Gray Vector' />
     // </div>
     //Open
-    <div className='flex flex-col justify-center items-center'>
+    <div className='flex flex-col justify-center items-center mt-20'>
             <p>
               Let us know what your experience
               with your product has been like 
               for you.
             </p>
-            <div id='Stars'className='flex flex-row justify-center items-center'>
+            <div id='Stars'className='flex flex-row justify-center items-center m-8'>
               <Image className='mx-1' src={StarYellow} alt={'Yellow Star'}></Image>
               <Image className='mx-1' src={StarYellow} alt={'Yellow Star'}></Image>
               <Image className='mx-1' src={StarYellow} alt={'Yellow Star'}></Image>
@@ -27,14 +27,14 @@ function RateProduct() {
               <Image className='mx-1' src={StarGray} alt={'Gray Star'}></Image>
             </div>
             <input
-              className='h-'
+              className='my-4 bg-[#D9D9D9] w-full p-12 rounded-[2vw]'
               type="text" 
               placeholder="Leave a comment (optional)"
               required
               autoCapitalize="off"
               autoCorrect="off" 
             />
-            <Button>Submit</Button>
+            <Button className=' p-y-6 w-full rounded-md text-bold'>Submit</Button>
           </div>
   )
 }

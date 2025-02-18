@@ -16,7 +16,7 @@ function ProductsList({
     <div>
       <ul>
         {list.map((product: productInfo) => (
-            <li key={product.id} className='flex flex-col justify-center items-center'>
+            <li key={product.id} className='flex flex-col justify-center items-center bg-[#FFFFFF] m-6 p-4 rounded-lg'>
               <h1 className='mt-10 font-bold'>{product.product_name}</h1>
               <p>{product.vender_name}</p>
               <h3>Star Rating</h3>

@@ -15,7 +15,7 @@ function SeeStarRatings() {
     //     <Image src={GrayVector} alt='Gray Vector' />
     // </div>
     // open
-    <div className='flex flex-col bg-[#F3F3F3] rounded-lg'>
+    <div className='flex flex-col bg-[#F3F3F3] rounded-lg my-12'>
       <div className='flex flex-row justify-stretch m-4'>
           <div className='flex items-center'>
               {/* <Image className='' src={StarYellow} alt={'Yellow Star'}></Image> */}
