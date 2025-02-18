@@ -15,34 +15,29 @@ function SeeStarRatings() {
     //     <Image src={GrayVector} alt='Gray Vector' />
     // </div>
     // open
-    <div className='flex flex-col bg-[#F3F3F3]'>
-      <div className='flex flex-row'>
-        <div className='flex flex-row'>
+    <div className='flex flex-col bg-[#F3F3F3] rounded-lg'>
+      <div className='flex flex-row justify-stretch m-4'>
           <div className='flex items-center'>
-            <h2 className='flex font-bold'>
               {/* <Image className='' src={StarYellow} alt={'Yellow Star'}></Image> */}
-              3/5 
-            </h2>
-            <div className='flex flex-row'>
-              <p className='text-[#000000]' >{`${5}`}</p>
-              <p className='text-[#BBB7C6]'>{`(${120} reviews)`}</p>
+            <div className='flex flex-col'>
+              <h2 className='flex font-bold text-[#000000]' >{`${3} Stars`}</h2>
+              <p className='text-[#BBB7C6]'>{`Based on ${120} reviews`}</p>
             </div>
           </div>
-        </div>
-          <div className='flex flex-col'>
-            <p>5 star</p>
-            <p>4 star</p>
-            <p>3 star</p>
-            <p>2 star</p>
-            <p>1 star</p>
-          </div>
+          <ul className='flex flex-col'>
+            <li>5 star</li>
+            <li>4 star</li>
+            <li>3 star</li>
+            <li>2 star</li>
+            <li>1 star</li>
+          </ul>
       </div>
-      <div id='Stars'className='flex flex-row justify-center items-center'>
-        <Image src={StarYellow} alt={'Yellow Star'}></Image>
-        <Image src={StarYellow} alt={'Yellow Star'}></Image>
-        <Image src={StarYellow} alt={'Yellow Star'}></Image>
-        <Image src={StarGray} alt={'Gray Star'}></Image>
-        <Image src={StarGray} alt={'Gray Star'}></Image>
+      <div id='Stars'className='flex flex-row justify-center items-center m-4'>
+        <Image className='mx-1' src={StarYellow} alt={'Yellow Star'}></Image>
+        <Image className='mx-1' src={StarYellow} alt={'Yellow Star'}></Image>
+        <Image className='mx-1' src={StarYellow} alt={'Yellow Star'}></Image>
+        <Image className='mx-1' src={StarGray} alt={'Gray Star'}></Image>
+        <Image className='mx-1' src={StarGray} alt={'Gray Star'}></Image>
       </div>
     </div>
   )

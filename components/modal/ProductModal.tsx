@@ -42,8 +42,8 @@ export default function ProductModal({
   if (productMetaData === undefined) return null
 
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center">
-      <div className="p-8 border w-96 shadow-lg bg-[#FFFFFF]">
+    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-end justify-center">
+      <div className="p-8 border w-96 shadow-lg rounded-t-[3vw] bg-[#FFFFFF]">
           <Link href='/'>
             <Image src={ArrowLeft} alt='X'></Image>
           </Link>
