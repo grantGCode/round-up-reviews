@@ -1,17 +1,20 @@
 import Link from 'next/link'
 import ProductModal from './modal/ProductModal';
-import type { productInfo, productPrams } from '../app/types/common';
+import type { productInfo, productPrams, /*productReview*/ } from '../app/types/common';
 
-function ProductsList({
-  list, 
+async function ProductsList({
+  list,
+  // allReviews, 
   searchParams,
 }: {
-    list: productInfo[], 
+    list: productInfo[],
+    // allReviews: productReview[] 
     searchParams: productPrams,
   }) {
     const showModal = searchParams?.show === 'true';
     const selectedProduct = list.find((product: productInfo) => product.id.toString() === searchParams?.productId);
-
+    // const reviewsOfProd = allReviews.map((reviews: productReview) => reviews);
+  
   return (
     <div>
       <ul>
@@ -37,8 +40,9 @@ function ProductsList({
       selectedProduct &&
       <ProductModal 
         params={{
-          id:  selectedProduct.id
+          id:  selectedProduct.id,
         }}
+        // reviewData={reviewsOfProd}
       />}
     </div>
   )

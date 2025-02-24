@@ -5,7 +5,7 @@ export async function GET() {
     const ratings = await new Promise((resolve, reject) => {
         //Original quey
         const sql = `SELECT 
-            reviews.id, product.product_name, reviews.star_rating, vender.vender_name, reviews.written_comment
+            reviews.id, product.product_name, product.id AS product_id, reviews.star_rating, vender.vender_name, reviews.written_comment
             FROM reviews 
             INNER JOIN product
             ON reviews.product_id = product.id

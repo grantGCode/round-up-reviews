@@ -9,6 +9,15 @@ export type productInfo = {
   vender_name: string;
 };
 
+export type productReview = {
+  id: number;
+  product_name: string;
+  product_id: number;
+  star_rating: number;
+  vender_name: string;
+  written_comment: string;
+};
+
 export interface productPrams {
   show?: string; 
   productId?: number | string | 0
@@ -16,6 +25,10 @@ export interface productPrams {
 
 export interface ProductsListProps {
   list: productInfo[];
+};
+
+export interface ProductsReviewsProps {
+  list: productReview[];
 };
 
 export interface ButtonProps {

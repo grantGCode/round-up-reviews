@@ -1,12 +1,12 @@
 'use client'
 import { useState, useEffect } from 'react';
 import SeeStarRatings from './SeeStarRatings';
-import SeeComments from './SeeComments';
+// import SeeComments from './SeeComments';
 import RateProduct from './RateProduct';
 import Image from 'next/image';
 import Link from 'next/link';
 import ArrowLeft from '../../public/Arrow-Left-Icon.png'
-import type { productInfo } from '../../app/types/common';
+import type { productInfo, productReview } from '../../app/types/common';
 
 export default function ProductModal({ 
   params,
@@ -14,9 +14,27 @@ export default function ProductModal({
   params: { id: number }
 }) {
   
-  const [productMetaData, setProductMetaData] = useState<productInfo>()
   const [productID] = useState(params.id);
+  const [productMetaData, setProductMetaData] = useState<productInfo>()
+  const [reviewData, setReviewData] = useState<productReview[]>()
+  const [totalRating, setTotal ] = useState<number>()
   
+  function getMostCommonStarRating(reviews: productReview[]): number {
+    if (reviews.length === 0) return 0; // Default if there are no reviews
+  
+    const starCount: Record<number, number> = {};
+  
+    // Count occurrences of each star rating
+    reviews.forEach(({ star_rating }) => {
+      starCount[star_rating] = (starCount[star_rating] || 0) + 1;
+    });
+  
+    // Find the most common star rating
+    return Object.entries(starCount)
+      .sort((a, b) => b[1] - a[1]) // Sort by frequency (descending)
+      .map(([star]) => Number(star))[0]; // Return the most common rating
+    }
+
   useEffect(() => {
     async function GetProductInfo() {
       const res = await fetch('http://localhost:3000/api/Products', {
@@ -24,9 +42,7 @@ export default function ProductModal({
         cache: 'force-cache' 
         
         //Revalidate in 30 sec
-        // next: {
-        //   revalidate: 30
-        // }
+        // next: { revalidate: 30 }
       });
       const data: productInfo[] = await res.json();
       const singleProduct = data.find((product: productInfo) => {
@@ -36,11 +52,36 @@ export default function ProductModal({
       });
       setProductMetaData(singleProduct)
     };
+
+    async function GetReviews(): Promise<void> {
+      const res = await fetch('http://localhost:3000/api/ReviewData', {
+        // cache data
+        // cache: 'force-cache'       
+          //Revalidate in 30 sec
+          next: { revalidate: 30 }
+        });
+      const data: productReview[] = await res.json();
+      const allReview = data.filter((stars: productReview) => {
+        if(stars.product_id === params.id){
+          return stars
+        }
+      });
+            
+      setReviewData(allReview)
+    
+      if(allReview.length > 0) {
+        const mostCommonRating = getMostCommonStarRating(allReview);
+        setTotal(mostCommonRating);
+      }
+    }
+
     GetProductInfo()
-  }, [productID])
+    GetReviews()
+
+  }, [productID, params.id])
 
   if (productMetaData === undefined) return null
-
+    // console.log(reviews)
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-end justify-center">
       <div className="pb-24 p-8 border w-full shadow-lg rounded-t-[3vw] bg-[#FFFFFF]">
@@ -50,9 +91,9 @@ export default function ProductModal({
           <div className='flex flex-col justify-center bg-[#FFFFFF]'>
             <h5 className='mt-10 text-10'>{productMetaData.vender_name}</h5>
             <h4 className='font-bold mt-1 mb-1 text-xl'>{productMetaData.product_name}</h4>
-            <p>{`${3} Star (120 reviews)`}</p>
-            <SeeStarRatings />
-            <SeeComments />
+            <p>{`${totalRating} Star (${reviewData?.length} reviews)`}</p>
+            <SeeStarRatings revData={reviewData ?? []} />
+            {/* <SeeComments refId={params} /> */}
             <RateProduct />
           </div>
         </div>
