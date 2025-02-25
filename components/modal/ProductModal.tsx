@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
 import SeeStarRatings from './SeeStarRatings';
-// import SeeComments from './SeeComments';
+import SeeComments from './SeeComments';
 import RateProduct from './RateProduct';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -81,7 +81,7 @@ export default function ProductModal({
   }, [productID, params.id])
 
   if (productMetaData === undefined) return null
-    // console.log(reviews)
+
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-end justify-center">
       <div className="pb-24 p-8 border w-full shadow-lg rounded-t-[3vw] bg-[#FFFFFF]">
@@ -93,7 +93,7 @@ export default function ProductModal({
             <h4 className='font-bold mt-1 mb-1 text-xl'>{productMetaData.product_name}</h4>
             <p>{`${totalRating} Star (${reviewData?.length} reviews)`}</p>
             <SeeStarRatings revData={reviewData ?? []} />
-            {/* <SeeComments refId={params} /> */}
+            <SeeComments revData={reviewData ?? []} />
             <RateProduct />
           </div>
         </div>

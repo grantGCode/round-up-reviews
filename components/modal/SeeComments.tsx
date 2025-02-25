@@ -6,34 +6,17 @@ import { useState, useEffect } from "react"
 import type { productReview } from '../../app/types/common'
 
 function SeeComments({
-  refId
+  revData
 }:{
-  refId: { id: number }
+  revData: productReview[]
 }) {
 
-  const [reviewData, setReviewData] = useState<productReview[]>()
+  const [reviewData, setReviewData] = useState<productReview[]>(revData)
 
   useEffect(() => {
-    async function GetReviews(): Promise<void> {
-      const res = await fetch('http://localhost:3000/api/ReviewData', {
-        // cache data
-        // cache: 'force-cache'       
-        //Revalidate in 30 sec
-        next: {
-          revalidate: 30
-        }
-      });
-      const data: productReview[] = await res.json();
-      const allReview = data.filter((review: productReview) => {
-        if(review.product_id === refId.id){
-          return review
-        }
-      });
-      setReviewData(allReview)
-    };
-    GetReviews()
-  }, [refId])
-    
+    setReviewData(revData)
+  }, [revData])
+    console.log(reviewData)
   return (
     //Closed
     // <div className='flex flex-row'>
