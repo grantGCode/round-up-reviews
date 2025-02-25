@@ -1,16 +1,20 @@
 'use client'
 import { useState, useEffect } from "react"
 import Image from 'next/image'
-// import PercentIcon from '../../public/Percent-Icon.png'
-// import GrayVector from '../../public/Gray-Vector.png'
+import PercentIcon from '../../public/Percent-Icon.png'
+import GrayVector from '../../public/Gray-Vector.png'
 import StarYellow from '../../public/StarYellow.png';
 import StarGray from '../../public/StarGray.png';
 import type { productReview } from '../../app/types/common'
 
 function SeeStarRatings({
-  revData
-}:{
-  revData: productReview[]
+  revData,
+  isOpen,
+  toggleOpen
+}: {
+  revData: productReview[],
+  isOpen: boolean,
+  toggleOpen: () => void
 }) {
 
   const [reviewData, setReviewData] = useState<productReview[]>(revData)
@@ -58,37 +62,40 @@ function SeeStarRatings({
   }, [revData, reviewData])  
 
   return (
-    // Closed
-    // <div className='flex flex-row'>
-    //     <Image src={PercentIcon} alt='Percent Icon' />   
-    //     <h2>SeeStarRatings</h2>
-    //     <Image src={GrayVector} alt='Gray Vector' />
-    // </div>
-    // open
-    <div className='flex flex-col bg-[#F3F3F3] rounded-lg my-12'>
-      <div className='flex flex-row justify-stretch m-4'>
-          <div className='flex items-center'>
-              {/* <Image className='' src={StarYellow} alt={'Yellow Star'}></Image> */}
-            <div className='flex flex-col'>
-              <h2 className='flex font-bold text-[#000000]' >{`${totalRating} Stars`}</h2>
-              <p className='text-[#BBB7C6]'>{`Based on ${reviewData?.length} reviews`}</p>
-            </div>
+    <div onClick={toggleOpen}>
+      {isOpen ? (
+        <div className='flex flex-col bg-[#F3F3F3] rounded-lg my-12'>
+          <div className='flex flex-row justify-stretch m-4'>
+              <div className='flex items-center'>
+                  {/* <Image className='' src={StarYellow} alt={'Yellow Star'}></Image> */}
+                <div className='flex flex-col'>
+                  <h2 className='flex font-bold text-[#000000]' >{`${totalRating} Stars`}</h2>
+                  <p className='text-[#BBB7C6]'>{`Based on ${reviewData?.length} reviews`}</p>
+                </div>
+              </div>
+              <ul className='flex flex-col'>
+                <li className="font-bold">5 star : {starCounts[5]}</li>
+                <li className="font-bold">4 star : {starCounts[4]}</li>
+                <li className="font-bold">3 star : {starCounts[3]}</li>
+                <li className="font-bold">2 star : {starCounts[2]}</li>
+                <li className="font-bold">1 star : {starCounts[1]}</li>
+              </ul>
           </div>
-          <ul className='flex flex-col'>
-            <li className="font-bold">5 star : {starCounts[5]}</li>
-            <li className="font-bold">4 star : {starCounts[4]}</li>
-            <li className="font-bold">3 star : {starCounts[3]}</li>
-            <li className="font-bold">2 star : {starCounts[2]}</li>
-            <li className="font-bold">1 star : {starCounts[1]}</li>
-          </ul>
-      </div>
-      <div id='Stars'className='flex flex-row justify-center items-center m-4'>
-        <Image className='mx-1' src={StarYellow} alt={'Yellow Star'}></Image>
-        <Image className='mx-1' src={StarYellow} alt={'Yellow Star'}></Image>
-        <Image className='mx-1' src={StarYellow} alt={'Yellow Star'}></Image>
-        <Image className='mx-1' src={StarGray} alt={'Gray Star'}></Image>
-        <Image className='mx-1' src={StarGray} alt={'Gray Star'}></Image>
-      </div>
+          <div id='Stars'className='flex flex-row justify-center items-center m-4'>
+            <Image className='mx-1' src={StarYellow} alt={'Yellow Star'}></Image>
+            <Image className='mx-1' src={StarYellow} alt={'Yellow Star'}></Image>
+            <Image className='mx-1' src={StarYellow} alt={'Yellow Star'}></Image>
+            <Image className='mx-1' src={StarGray} alt={'Gray Star'}></Image>
+            <Image className='mx-1' src={StarGray} alt={'Gray Star'}></Image>
+          </div>
+        </div>
+      ) : (
+        <div className='flex flex-row'>
+            <Image src={PercentIcon} alt='Percent Icon' />   
+            <h2>SeeStarRatings</h2>
+            <Image src={GrayVector} alt='Gray Vector' />
+        </div>
+      )}
     </div>
   )
 }

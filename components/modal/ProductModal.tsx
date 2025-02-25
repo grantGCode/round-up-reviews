@@ -18,6 +18,14 @@ export default function ProductModal({
   const [productMetaData, setProductMetaData] = useState<productInfo>()
   const [reviewData, setReviewData] = useState<productReview[]>()
   const [totalRating, setTotal ] = useState<number>()
+
+  const [openComponent, setOpenComponent] = useState<string>('rate');
+
+  function toggleComponent(componentName: string) {
+    if (openComponent !== componentName) {
+      setOpenComponent(componentName);
+    }
+  }
   
   function getMostCommonStarRating(reviews: productReview[]): number {
     if (reviews.length === 0) return 0; // Default if there are no reviews
@@ -92,9 +100,20 @@ export default function ProductModal({
             <h5 className='mt-10 text-10'>{productMetaData.vender_name}</h5>
             <h4 className='font-bold mt-1 mb-1 text-xl'>{productMetaData.product_name}</h4>
             <p>{`${totalRating} Star (${reviewData?.length} reviews)`}</p>
-            <SeeStarRatings revData={reviewData ?? []} />
-            <SeeComments revData={reviewData ?? []} />
-            <RateProduct />
+            <SeeStarRatings
+              revData={reviewData ?? []}
+              isOpen={openComponent === 'ratings'}
+              toggleOpen={() => toggleComponent('ratings')}
+          />
+          <SeeComments
+              revData={reviewData ?? []}
+              isOpen={openComponent === 'comments'}
+              toggleOpen={() => toggleComponent('comments')}
+          />
+          <RateProduct
+              isOpen={openComponent === 'rate'}
+              toggleOpen={() => toggleComponent('rate')}
+          />
           </div>
         </div>
     </div>
