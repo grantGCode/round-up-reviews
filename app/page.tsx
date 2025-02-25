@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import BreakLine from '../public/brakeLineHome.png';
 import ProductsList from '../components/ProductsList';
-import type { productInfo, /*productReview*/ } from './types/common'
+import type { productInfo } from './types/common'
 
 export default async function Home({ 
   searchParams, 
@@ -21,18 +21,6 @@ export default async function Home({
   
   const productData: productInfo[] = await res.json();
 
-  // const res2 = await fetch('http://localhost:3000/api/ReviewData', {
-  //   // cache data
-  //   // cache: 'force-cache' 
-          
-  //   //Revalidate in 30 sec
-  //   next: {
-  //     revalidate: 30
-  //   }
-  // });
-  // const reviewsData: productReview[] = await res2.json();
-  // const Reviews = reviewsData.map((reviews: productReview) => reviews)
-
   return (
     <div className='flex flex-col justify-center items-center'>
       <div 
@@ -45,7 +33,6 @@ export default async function Home({
       <Image className='py-20' src={BreakLine} alt='break line' />
       <ProductsList 
         list={productData} 
-        // allReviews={Reviews} 
         searchParams={searchParams} 
       />
     </div>
