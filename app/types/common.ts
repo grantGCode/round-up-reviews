@@ -18,6 +18,10 @@ export type productReview = {
   written_comment: string;
 };
 
+export interface AddStarRatingProps {
+  onRatingChange?: (rating: number) => void;
+}
+
 export interface productPrams {
   show?: string; 
   productId?: number | string | 0

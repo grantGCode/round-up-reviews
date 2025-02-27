@@ -3,9 +3,9 @@ import Button from '../button';
 import Image from 'next/image';
 import GrayVector from '../../public/Gray-Vector.png';
 import PercentIcon from '../../public/Percent-Icon.png';
-import StarYellow from '../../public/StarYellow.png';
-import StarGray from '../../public/StarGray.png';
-
+// import StarYellow from '../../public/StarYellow.png';
+// import StarGray from '../../public/StarGray.png';
+import AddStarRating from '../AddStarRating';
 function RateProduct({
   isOpen,
   toggleOpen
@@ -25,13 +25,14 @@ function RateProduct({
         with your product has been like 
         for you.
       </p>
-    <div id='Stars'className='flex flex-row justify-center items-center m-8'>
+      <AddStarRating />
+    {/* <div id='Stars'className='flex flex-row justify-center items-center m-8'>
       <Image className='mx-1' src={StarYellow} alt={'Yellow Star'}></Image>
       <Image className='mx-1' src={StarYellow} alt={'Yellow Star'}></Image>
       <Image className='mx-1' src={StarYellow} alt={'Yellow Star'}></Image>
       <Image className='mx-1' src={StarGray} alt={'Gray Star'}></Image>
       <Image className='mx-1' src={StarGray} alt={'Gray Star'}></Image>
-    </div>
+    </div> */}
     <input
       className='my-4 bg-[#D9D9D9] w-full p-12 rounded-[2vw]'
       type="text" 
