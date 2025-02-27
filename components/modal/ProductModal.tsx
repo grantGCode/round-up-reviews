@@ -118,6 +118,7 @@ export default function ProductModal({
           <RateProduct
             isOpen={openComponent === 'rate'}
             toggleOpen={() => toggleComponent('rate')}
+            productData={productMetaData.product_name}
           />
         </div>
       </div>
