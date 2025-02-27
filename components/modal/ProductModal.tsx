@@ -4,6 +4,7 @@ import SeeStarRatings from './SeeStarRatings';
 import SeeComments from './SeeComments';
 import RateProduct from './RateProduct';
 import Image from 'next/image';
+import SmallStar from '../../public/Small-Star.png'
 import Link from 'next/link';
 import ArrowLeft from '../../public/Arrow-Left-Icon.png'
 import type { productInfo, productReview } from '../../app/types/common';
@@ -93,29 +94,33 @@ export default function ProductModal({
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-end justify-center">
       <div className="pb-24 p-8 border w-full shadow-lg rounded-t-[3vw] bg-[#FFFFFF]">
-          <Link href='/'>
-            <Image src={ArrowLeft} alt='X'></Image>
-          </Link>
-          <div className='flex flex-col justify-center bg-[#FFFFFF]'>
-            <h5 className='mt-10 text-10'>{productMetaData.vender_name}</h5>
-            <h4 className='font-bold mt-1 mb-1 text-xl'>{productMetaData.product_name}</h4>
-            <p>{`${totalRating} Star (${reviewData?.length} reviews)`}</p>
-            <SeeStarRatings
-              revData={reviewData ?? []}
-              isOpen={openComponent === 'ratings'}
-              toggleOpen={() => toggleComponent('ratings')}
+        <Link href='/'>
+          <Image src={ArrowLeft} alt='X'></Image>
+        </Link>
+        <div className='flex flex-col justify-center bg-[#FFFFFF]'>
+          <h5 className='mt-10 text-10'>{productMetaData.vender_name}</h5>
+          <h4 className='font-bold mt-1 mb-1 text-xl'>{productMetaData.product_name}</h4>
+          <div className='flex flex-row items-center gap-1'>
+            <Image className='h-5 w-5' src={SmallStar} alt='Stars' />
+            <p className='font-bold'>{`${totalRating}`}</p>
+            <p className='text-[#BBB7C6]'>{`(${reviewData?.length} reviews)`}</p>
+          </div>
+          <SeeStarRatings
+            revData={reviewData ?? []}
+            isOpen={openComponent === 'ratings'}
+            toggleOpen={() => toggleComponent('ratings')}
           />
           <SeeComments
-              revData={reviewData ?? []}
-              isOpen={openComponent === 'comments'}
-              toggleOpen={() => toggleComponent('comments')}
+            revData={reviewData ?? []}
+            isOpen={openComponent === 'comments'}
+            toggleOpen={() => toggleComponent('comments')}
           />
           <RateProduct
-              isOpen={openComponent === 'rate'}
-              toggleOpen={() => toggleComponent('rate')}
+            isOpen={openComponent === 'rate'}
+            toggleOpen={() => toggleComponent('rate')}
           />
-          </div>
         </div>
+      </div>
     </div>
   )
 }
