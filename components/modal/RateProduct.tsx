@@ -18,13 +18,13 @@ function RateProduct({
       {isOpen ? (
     <div 
       onClick={toggleOpen} 
-      className='flex flex-col justify-center items-center mt-20'
+      className='flex flex-col justify-center items-center mt-10'
     >
       <p>
         Let us know what your experience
         with your product has been like 
         for you.
-    </p>
+      </p>
     <div id='Stars'className='flex flex-row justify-center items-center m-8'>
       <Image className='mx-1' src={StarYellow} alt={'Yellow Star'}></Image>
       <Image className='mx-1' src={StarYellow} alt={'Yellow Star'}></Image>
@@ -43,11 +43,17 @@ function RateProduct({
       <Button className=' p-y-6 w-full rounded-md text-bold'>Submit</Button>
   </div>
     ) : (
-      <div className='flex flex-row'>
-        <Image src={PercentIcon} alt='Percent Icon' />   
-        <h2>Rate Product</h2>
-        <Image src={GrayVector} alt='Gray Vector' />
+      <div className="my-2">
+        <div className=" h-1 bg-[#EEEEEE] mb-4" />
+        <div className="flex flex-row items-center justify-between w-full">
+          <div className="flex items-center gap-4">
+            <Image src={PercentIcon} alt='Percent Icon' />   
+            <h2 className="font-bold">Rate Product</h2>
+          </div>
+          <Image src={GrayVector} alt='Gray Vector' />
       </div>
+      <div className=" h-1 bg-[#EEEEEE] mt-4" />
+    </div>
     )}
   </div>
   )

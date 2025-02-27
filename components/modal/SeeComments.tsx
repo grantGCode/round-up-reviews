@@ -20,28 +20,32 @@ function SeeComments({
   useEffect(() => {
     setReviewData(revData)
   }, [revData])
-    console.log(reviewData)
+
   return (
-    //Closed
-    //Opened
     <div onClick={toggleOpen} >
       {isOpen ? (
     <div className="max-h-60 overflow-y-auto space-y-4 p-2">
       <ul>
         {reviewData?.map((reviews: productReview) => (
-          <li key={reviews.id} className='flex flex-col bg-[#F3F3F3] rounded-lg my-12'>
-            <h5 className="text-[#000000]">{reviews?.star_rating}</h5>
+          <li key={reviews.id} className='flex flex-col bg-[#F3F3F3] rounded-lg my-12 p-5'>
+            <h5 className="text-[#000000] p-1">{reviews?.star_rating}</h5>
             <p>{reviews?.written_comment}</p>
           </li>
         ))}
       </ul>
     </div>
       ) : (
-      <div className='flex flex-row'>
-        <Image src={WordBubble} alt='Word Bubble Icon' />
-        <h2>See Comments</h2>
-        <Image src={GrayVector} alt='Gray Vector' />
-      </div>
+        <div className="mt-2">
+          <div className=" h-1 bg-[#EEEEEE] mb-4" />
+            <div className="flex flex-row items-center justify-between w-full">
+              <div className="flex items-center gap-4">
+                <Image src={WordBubble} alt='Word Bubble Icon' />
+                <h2 className="font-bold">See Comments</h2>
+              </div>
+              <Image src={GrayVector} alt='Gray Vector' />
+            </div>
+          <div className=" h-1 bg-[#EEEEEE] mt-4" />
+        </div>
       )}
     </div>
   )

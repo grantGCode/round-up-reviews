@@ -90,10 +90,16 @@ function SeeStarRatings({
           </div>
         </div>
       ) : (
-        <div className='flex flex-row'>
-            <Image src={PercentIcon} alt='Percent Icon' />   
-            <h2>SeeStarRatings</h2>
-            <Image src={GrayVector} alt='Gray Vector' />
+        <div className="mt-8">
+          <div className=" h-1 bg-[#EEEEEE] my-4" />
+          <div className="flex flex-row items-center justify-between w-full">
+            <div className="flex items-center gap-4">
+              <Image src={PercentIcon} alt="Percent Icon" />
+              <h2 className="font-bold">SeeStarRatings</h2>
+            </div>
+            <Image src={GrayVector} alt="Gray Vector" />
+          </div>
+          <div className=" h-1 bg-[#EEEEEE] mt-4" />
         </div>
       )}
     </div>
