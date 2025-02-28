@@ -15,7 +15,7 @@ export type productReview = {
   product_id: number;
   star_rating: number;
   vender_name: string;
-  written_comment: string;
+  written_comment: string | null;
 };
 
 export interface AddStarRatingProps {
