@@ -1,10 +1,11 @@
 'use client'
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
-import SmallStar from '../../public/Small-Star.png'
-import WordBubble from '../../public/Word-Bubble-Icon.png'
-import GrayVector from '../../public/Gray-Vector.png'
-import type { productReview } from '../../app/types/common'
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import StarRatingSmall from '../StarRatingSmall';
+// import SmallStar from '../../public/Small-Star.png';
+import WordBubble from '../../public/Word-Bubble-Icon.png';
+import GrayVector from '../../public/Gray-Vector.png';
+import type { productReview } from '../../app/types/common';
 
 function SeeComments({
   revData,
@@ -30,12 +31,13 @@ function SeeComments({
         {reviewData
           ?.filter((reviews) => reviews.written_comment && reviews.written_comment.trim() !== '')
           .map((reviews) => (
-            <li key={reviews.id} className="flex flex-col bg-[#F3F3F3] rounded-lg my-12 p-5">
-              <div className="flex flex-row items-center gap-1">
-                <h5 className="text-[#000000] font-bold p-1">{reviews?.star_rating}</h5>
-                <Image className="h-5 w-5" src={SmallStar} alt="Stars" />
-              </div>
-              <p>{reviews?.written_comment}</p>
+            <li key={reviews.id} className='flex flex-col bg-[#F3F3F3] rounded-lg my-12 p-5'>
+              <StarRatingSmall rating={reviews?.star_rating} />
+              {/* <div className='flex flex-row items-center gap-1'>
+                <h5 className='text-[#000000] font-bold p-1'>{reviews?.star_rating}</h5>
+                <Image className='h-5 w-5' src={SmallStar} alt='Stars' />
+              </div> */}
+              <p className='m-1' >{reviews?.written_comment}</p>
             </li>
           ))
         }

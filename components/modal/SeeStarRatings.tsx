@@ -3,8 +3,7 @@ import { useState, useEffect } from "react"
 import Image from 'next/image'
 import PercentIcon from '../../public/Percent-Icon.png'
 import GrayVector from '../../public/Gray-Vector.png'
-import StarYellow from '../../public/StarYellow.png';
-import StarGray from '../../public/StarGray.png';
+import StarRating from '../StarRating'
 import type { productReview } from '../../app/types/common'
 
 function SeeStarRatings({
@@ -18,7 +17,7 @@ function SeeStarRatings({
 }) {
 
   const [reviewData, setReviewData] = useState<productReview[]>(revData)
-  const [totalRating, setTotal ] = useState<number>()
+  const [totalRating, setTotal ] = useState<number>(0)
   const [starCounts, setStarCounts] = useState<Record<number, number>>({ 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 });
 
   function getMostCommonStarRating(reviews: productReview[]): number {
@@ -67,7 +66,6 @@ function SeeStarRatings({
         <div className='flex flex-col bg-[#F3F3F3] rounded-lg my-12'>
           <div className='flex flex-row justify-stretch m-4'>
               <div className='flex items-center'>
-                  {/* <Image className='' src={StarYellow} alt={'Yellow Star'}></Image> */}
                 <div className='flex flex-col'>
                   <h2 className='flex font-bold text-[#000000]' >{`${totalRating} Stars`}</h2>
                   <p className='text-[#BBB7C6]'>{`Based on ${reviewData?.length} reviews`}</p>
@@ -81,13 +79,7 @@ function SeeStarRatings({
                 <li className="font-bold">1 star : {starCounts[1]}</li>
               </ul>
           </div>
-          <div id='Stars'className='flex flex-row justify-center items-center m-4'>
-            <Image className='mx-1' src={StarYellow} alt={'Yellow Star'}></Image>
-            <Image className='mx-1' src={StarYellow} alt={'Yellow Star'}></Image>
-            <Image className='mx-1' src={StarYellow} alt={'Yellow Star'}></Image>
-            <Image className='mx-1' src={StarGray} alt={'Gray Star'}></Image>
-            <Image className='mx-1' src={StarGray} alt={'Gray Star'}></Image>
-          </div>
+          <StarRating rating={totalRating} />
         </div>
       ) : (
         <div className="mt-8">
