@@ -63,7 +63,7 @@ export default function ProductModal({
     };
 
     async function GetReviews(): Promise<void> {
-      const res = await fetch('http://localhost:3000/api/ReviewData', {
+      const res = await fetch('http://localhost:3000/api/Reviews', {
         // cache data
         // cache: 'force-cache'       
           //Revalidate in 30 sec
