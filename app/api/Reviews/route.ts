@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
 
     const { product_id, star_rating, written_comment } = await req.json();
 
-    if (!product_id || !star_rating || !written_comment) {
+    if (!product_id || !star_rating ) {
         return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 

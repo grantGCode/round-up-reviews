@@ -27,11 +27,13 @@ function SeeComments({
       {isOpen ? (
     <div className='max-h-60 overflow-y-auto space-y-4 p-2'>
       <ul>
-        {reviewData?.map((reviews: productReview) => (
-          <li key={reviews.id} className='flex flex-col bg-[#F3F3F3] rounded-lg my-12 p-5'>
-            <div className='flex flex-row items-center gap-1'>
-              <h5 className='text-[#000000] font-bold p-1'>{reviews?.star_rating}</h5>
-              <Image className='h-5 w-5' src={SmallStar} alt='Stars' />
+        {reviewData
+          ?.filter((reviews) => reviews.written_comment && reviews.written_comment.trim() !== '')
+          .map((reviews) => (
+          <li key={reviews.id} className="flex flex-col bg-[#F3F3F3] rounded-lg my-12 p-5">
+            <div className="flex flex-row items-center gap-1">
+              <h5 className="text-[#000000] font-bold p-1">{reviews?.star_rating}</h5>
+              <Image className="h-5 w-5" src={SmallStar} alt="Stars" />
             </div>
             <p>{reviews?.written_comment}</p>
           </li>
