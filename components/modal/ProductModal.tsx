@@ -98,7 +98,9 @@ export default function ProductModal({
         <Link href='/'>
           <Image src={ArrowLeft} alt='X'></Image>
         </Link>
-        <Image className='flex items-center' src={EmptyImage} alt={'Product Image'} />
+        <div className='flex justify-center items-center'>
+          <Image src={EmptyImage} alt={'Product Image'} />
+        </div>
         <div className='flex flex-col justify-center bg-[#FFFFFF]'>
           <h5 className='mt-10 text-10'>{productMetaData.vender_name}</h5>
           <h4 className='font-bold mt-1 mb-1 text-xl'>{productMetaData.product_name}</h4>
