@@ -4,8 +4,8 @@ import SeeStarRatings from './SeeStarRatings';
 import SeeComments from './SeeComments';
 import RateProduct from './RateProduct';
 import Image from 'next/image';
-import EmptyImage from '../../public/Empty-Image.png';
-import SmallStar from '../../public/Small-Star.png'
+import EmptyImage from '../../public/product-images/Empty-Image.png';
+import SmallStar from '../../public/stars/Small-Star.png'
 import Link from 'next/link';
 import ArrowLeft from '../../public/Arrow-Left-Icon.png'
 import type { productInfo, productReview } from '../../app/types/common';

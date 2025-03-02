@@ -1,8 +1,8 @@
 'use client'
 import { useState } from "react";
 import Image from "next/image"
-import StarYellow from '../public/StarYellow.png';
-import StarGray from '../public/StarGray.png';
+import StarYellow from '../public/stars/StarYellow.png';
+import StarGray from '../public/stars/StarGray.png';
 import type {AddStarRatingProps} from '../app/types/common'
 
 const AddStarRating: React.FC<AddStarRatingProps> = ({ onRatingChange }) => {
