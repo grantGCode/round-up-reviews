@@ -4,6 +4,7 @@ import SeeStarRatings from './SeeStarRatings';
 import SeeComments from './SeeComments';
 import RateProduct from './RateProduct';
 import Image from 'next/image';
+import EmptyImage from '../../public/Empty-Image.png';
 import SmallStar from '../../public/Small-Star.png'
 import Link from 'next/link';
 import ArrowLeft from '../../public/Arrow-Left-Icon.png'
@@ -97,6 +98,7 @@ export default function ProductModal({
         <Link href='/'>
           <Image src={ArrowLeft} alt='X'></Image>
         </Link>
+        <Image className='flex items-center' src={EmptyImage} alt={'Product Image'} />
         <div className='flex flex-col justify-center bg-[#FFFFFF]'>
           <h5 className='mt-10 text-10'>{productMetaData.vender_name}</h5>
           <h4 className='font-bold mt-1 mb-1 text-xl'>{productMetaData.product_name}</h4>
@@ -119,6 +121,7 @@ export default function ProductModal({
             isOpen={openComponent === 'rate'}
             toggleOpen={() => toggleComponent('rate')}
             productData={productMetaData.product_name}
+            productId={productID}
           />
         </div>
       </div>

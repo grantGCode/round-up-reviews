@@ -16,7 +16,7 @@ const AddStarRating: React.FC<AddStarRatingProps> = ({ onRatingChange }) => {
         onRatingChange(newRating);
       }
     };
-    console.log(rating)
+    
     return (
         <div id="Stars" className="flex flex-row justify-center items-center m-8">
         {Array.from({ length: 5 }).map((_, index) => (
