@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import ProductModal from './modal/ProductModal';
-import type { productInfo, productPrams } from '../app/types/common';
+import type { productInfo, productReview, productPrams } from '../app/types/common';
 import StarRatingSmall from '../components/StarRatingSmall';
 
 async function ProductsList({
@@ -11,14 +11,41 @@ async function ProductsList({
   searchParams: productPrams,
 }) {
   
+  const res = await fetch('http://localhost:3000/api/Reviews', {
+    // cache data
+    // cache: 'force-cache'       
+    //Revalidate in 30 sec
+      next: { revalidate: 30 }
+    });
+    
+  const reviewData: productReview[] = await res.json();
+
   const showModal = searchParams?.show === 'true';
+
   const selectedProduct = list.find((product: productInfo) => product.id.toString() === searchParams?.productId);
   
+  const product = list.filter((product: productInfo) => 
+    {product
+      if(product.id === selectedProduct?.id){
+        return product
+      }
+    })
+
+  const reviewFilter = reviewData.filter((reviews: productReview) => 
+    {reviews
+      if(reviews.product_id === selectedProduct?.id){
+        return reviews
+      }
+    })
+
   return (
     <div>
       <ul>
         {list.map((product: productInfo) => (
-            <li key={product.id} className='flex flex-col justify-center items-center bg-[#FFFFFF] m-6 p-4 rounded-lg'>
+            <li 
+              className='flex flex-col justify-center items-center bg-[#FFFFFF] m-6 p-4 rounded-lg'
+              key={product.id}
+            >
               <h1 className='mt-10 font-bold'>{product.product_name}</h1>
               <p>{product.vender_name}</p>
               <StarRatingSmall rating={5} /> {/* temp*/}
@@ -37,9 +64,8 @@ async function ProductsList({
       {showModal && 
         selectedProduct &&
         <ProductModal 
-          params={{
-            id:  selectedProduct.id,
-          }}
+          myReviewData={reviewFilter}
+          productInfo={product[0]} 
       />}
     </div>
   )
