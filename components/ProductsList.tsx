@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import ProductModal from './modal/ProductModal';
 import type { productInfo, productReview, productPrams } from '../app/types/common';
-import StarRatingSmall from '../components/StarRatingSmall';
+import StarRatingMedium from '../components/StarRatingMedium';
 
 async function ProductsList({
   list,
@@ -38,6 +38,22 @@ async function ProductsList({
       }
     })
 
+  const calculateAverageRating = (productId: number): number => {
+    const productReviews = reviewData.filter((review) => review.product_id === productId);
+    if (productReviews.length === 0) return 0; // No reviews yet
+
+    const starCount: Record<number, number> = {};
+
+    // Count occurrences of each star rating
+    productReviews.forEach(({ star_rating }) => {
+      starCount[star_rating] = (starCount[star_rating] || 0) + 1;
+    });
+
+    return Object.entries(starCount)
+      .sort((a, b) => b[1] - a[1]) // Sort by frequency (descending)
+      .map(([star]) => Number(star))[0]; // Return the most common rating
+    };
+
   return (
     <div>
       <ul>
@@ -48,7 +64,7 @@ async function ProductsList({
             >
               <h1 className='mt-10 font-bold'>{product.product_name}</h1>
               <p>{product.vender_name}</p>
-              <StarRatingSmall rating={5} /> {/* temp*/}
+              <StarRatingMedium rating={calculateAverageRating(product.id)} />
               <Link 
                 className='mt-5 px-4 py-2 bg-[#005FF6] text-white rounded hover:bg-blue-700'
                 href={`/?show=true&productId=${product.id}`}
