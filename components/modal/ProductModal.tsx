@@ -56,15 +56,15 @@ export default function ProductModal({
   }, [myReviewData])
 
   if (productInfo === undefined) return null
-
+console.log(productInfo.image_path)
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-end justify-center">
-      <div className="pb-24 p-8 border w-full shadow-lg rounded-t-[3vw] bg-[#FFFFFF]">
+      <div className="p-8 border w-full shadow-lg rounded-t-[3vw] bg-[#FFFFFF]">
         <Link href='/'>
-          <Image src={ArrowLeft} alt='X'></Image>
+          <Image className='mb-10' src={ArrowLeft} alt='X'></Image>
         </Link>
-        <div className='flex justify-center items-center'>
-          <Image src={EmptyImage} alt={'Product Image'} />
+        <div className='flex justify-center items-center bg-[#D9D9D9] rounded-xl'>
+            <Image src={productInfo.image_path || EmptyImage} alt={'Product Image'} width={300} height={200} />
         </div>
         <div className='flex flex-col justify-center bg-[#FFFFFF]'>
           <h5 className='mt-10 text-10'>{productInfo.vender_name}</h5>

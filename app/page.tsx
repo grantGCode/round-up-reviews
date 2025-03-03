@@ -1,7 +1,5 @@
-import Image from 'next/image';
-import BreakLine from '../public/brakeLineHome.png';
 import ProductsList from '../components/ProductsList';
-import type { productInfo } from './types/common'
+import type { productInfo } from './types/common';
 
 export default async function Home({ 
   searchParams, 
@@ -11,12 +9,12 @@ export default async function Home({
   const res = await fetch('http://localhost:3000/api/Products', {
     
     // cache data
-    cache: 'force-cache' 
+    // cache: 'force-cache' 
     
     //Revalidate in 30 sec
-    // next: {
-    //   revalidate: 30
-    // }
+    next: {
+      revalidate: 30
+    }
   });
   
   const productData: productInfo[] = await res.json();
@@ -26,7 +24,6 @@ export default async function Home({
       <div>
          {/*Add Search bar filter via vendor or product name */}
       </div>
-      <Image className='py-20' src={BreakLine} alt='break line' />
       <ProductsList 
         list={productData} 
         searchParams={searchParams} 

@@ -1,7 +1,9 @@
 import Link from 'next/link'
+import Image from 'next/image';
 import ProductModal from './modal/ProductModal';
 import type { productInfo, productReview, productPrams } from '../app/types/common';
 import StarRatingMedium from '../components/StarRatingMedium';
+// import EmptyImage from '../../public/product-images/Empty-Image.png';
 
 async function ProductsList({
   list,
@@ -59,20 +61,23 @@ async function ProductsList({
       <ul>
         {list.map((product: productInfo) => (
             <li 
-              className='flex flex-col justify-center items-center bg-[#FFFFFF] m-6 p-4 rounded-lg'
+              className='flex flex-row justify-center items-center bg-[#FFFFFF] m-6 rounded-lg'
               key={product.id}
             >
-              <h1 className='mt-10 font-bold'>{product.product_name}</h1>
-              <p>{product.vender_name}</p>
-              <StarRatingMedium rating={calculateAverageRating(product.id)} />
-              <Link 
-                className='mt-5 px-4 py-2 bg-[#005FF6] text-white rounded hover:bg-blue-700'
-                href={`/?show=true&productId=${product.id}`}
-                key={product.id}
-                scroll={false}
-              >
-                Rate
-              </Link>
+              <Image src={product.image_path} alt={'Product Image'} width={190} height={150} />
+              <div className='flex flex-col justify-center items-center'>
+                <h1 className='mt-10 font-bold'>{product.product_name}</h1>
+                <p>{product.vender_name}</p>
+                <StarRatingMedium rating={calculateAverageRating(product.id)} />
+                <Link 
+                  className='my-3 px-4 py-2 bg-[#005FF6] text-white rounded hover:bg-blue-700'
+                  href={`/?show=true&productId=${product.id}`}
+                  key={product.id}
+                  scroll={false}
+                >
+                  Rate
+                </Link>
+              </div>
             </li>
           ),
         )}

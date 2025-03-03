@@ -7,6 +7,7 @@ export type productInfo = {
   id: number;
   product_name: string;
   vender_name: string;
+  image_path: string;
 };
 
 export type productReview = {
