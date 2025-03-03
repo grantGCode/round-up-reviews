@@ -9,11 +9,11 @@ interface StarDisplayProps {
 const StarDisplay: React.FC<StarDisplayProps> = ({ rating }) => {
 
   return (
-    <div className="flex flex-row items-center my-1">
+    <div className="flex flex-row justify-center my-1 w-full max-w-[140px] flex-wrap overflow-hidden">
       {Array.from({ length: 5 }).map((_, index) => (
         <Image
           key={index}
-          className="mx-1"
+          className="w-5 h-5.5 mx-0.5"
           src={index < rating ? YellowStar : GrayStar}
           alt={index < rating ? "YellowStar" : "GrayStar"}
         />
