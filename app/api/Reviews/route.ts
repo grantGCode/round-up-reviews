@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from 'next/cache';
 import db from "../../../db/db";
 
 export async function GET() {
@@ -38,6 +39,9 @@ export async function POST(req: NextRequest) {
             else resolve(result);
         });
     })
+
+    revalidatePath('/api/Reviews');
+    revalidatePath('/api/Products');
 
     return NextResponse.json({ message: "Review added successfully", newReview}, { status: 201 });
 };
