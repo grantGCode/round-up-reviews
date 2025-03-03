@@ -30,7 +30,7 @@ function SeeComments({
         {reviewData
           ?.filter((reviews) => reviews.written_comment && reviews.written_comment.trim() !== '')
           .map((reviews) => (
-            <li key={reviews.id} className='flex flex-col bg-[#F3F3F3] rounded-lg my-12 p-5'>
+            <li key={reviews.id} className='flex flex-col bg-[#F3F3F3] rounded-lg p-5 mb-4 w-full md:max-w-[500px] mx-auto'>
               <StarRatingSmall rating={reviews?.star_rating} />
               <p className='m-1' >{reviews?.written_comment}</p>
             </li>

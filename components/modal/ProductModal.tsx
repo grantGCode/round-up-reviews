@@ -53,13 +53,19 @@ export default function ProductModal({
       setTotal(mostCommonRating);
     }
 
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+    
   }, [myReviewData])
 
   if (productInfo === undefined) return null
 console.log(productInfo.image_path)
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-end justify-center">
-      <div className="p-8 border w-full shadow-lg rounded-t-[3vw] bg-[#FFFFFF]">
+      <div className="p-8 border w-auto shadow-lg rounded-t-[3vw] bg-[#FFFFFF] overflow-y-auto max-h-[90vh]">
         <Link href='/'>
           <Image className='mb-10' src={ArrowLeft} alt='X'></Image>
         </Link>

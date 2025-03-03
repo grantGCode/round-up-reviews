@@ -63,7 +63,7 @@ function SeeStarRatings({
   return (
     <div onClick={toggleOpen}>
       {isOpen ? (
-        <div className='flex flex-col bg-[#F3F3F3] rounded-lg my-12'>
+        <div className='flex flex-col bg-[#F3F3F3] rounded-lg my-12 w-full md:max-w-[500px] mx-auto'>
           <div className='flex flex-row justify-stretch m-4'>
               <div className='flex items-center'>
                 <div className='flex flex-col'>

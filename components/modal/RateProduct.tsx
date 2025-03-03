@@ -3,7 +3,7 @@ import {useState} from 'react';
 import Button from '../button';
 import Image from 'next/image';
 import GrayVector from '../../public/Gray-Vector.png';
-import PercentIcon from '../../public/Percent-Icon.png';
+import BlackStar from '../../public/stars/Texas-Star-Black.png';
 import AddStarRating from '../AddStarRating';
 import type {productInfo} from '../../app/types/common'
 
@@ -46,7 +46,7 @@ function RateProduct({
   return (
     <div onClick={toggleOpen}>
       {isOpen ? (
-      <div className='flex flex-col justify-center items-center mt-10'
+      <div className='flex flex-col justify-center items-center mt-10 w-full md:max-w-[500px] mx-auto'
         onClick={toggleOpen} 
       >
         <p>
@@ -55,13 +55,16 @@ function RateProduct({
           for you.
         </p>
         <AddStarRating onRatingChange={createNewRating} />
-        <input className='my-4 bg-[#D9D9D9] w-full p-12 rounded-[2vw]'
-          type="text" 
+        <textarea
+          className={`my-4 bg-[#D9D9D9] w-full p-4 rounded-[2vw] resize-none overflow-y-auto h-32 
+                      text-left placeholder:text-center focus:placeholder:text-left`}
           placeholder="Leave a comment (optional)"
           required
           autoCapitalize="off"
-          autoCorrect="off" 
+          autoCorrect="off"
+          maxLength={280}
           onChange={(e) => setUserComment(e.target.value)}
+          value={userComment || ""}
         />
         <Button className='p-y-6 w-full rounded-md text-bold' 
           onClick={() => submitNewRating(productId, userStarRate, userComment)}
@@ -75,8 +78,10 @@ function RateProduct({
           <div className="flex flex-row items-center justify-between w-full">
             <div className="flex items-center gap-4">
               <Image 
-                src={PercentIcon} 
-                alt='Percent Icon' 
+                src={BlackStar} 
+                alt='Percent Icon'
+                height={30}
+                width={30} 
               />   
               <h2 className="font-bold">Rate Product</h2>
             </div>
