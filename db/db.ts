@@ -1,12 +1,15 @@
 import mysql from 'mysql2';
   
+const host = process.env.HOST
+const user = process.env.USER
 const userPassword = process.env.DB_PASSWORD
+const database = process.env.BASE
 
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
+  host: host,
+  user: user,
   password: userPassword,
-  database: 'review_round_up_db'
+  database: database
 
 });
 
