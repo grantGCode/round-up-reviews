@@ -1,5 +1,9 @@
+import Image from 'next/image';
+import Hero from '../components/Hero';
+import BrakeLine from '../public/brakeLineHome.png';
 import ProductsList from '../components/ProductsList';
 import type { productInfo } from './types/common';
+
 
 export default async function Home({ 
   searchParams, 
@@ -21,9 +25,12 @@ export default async function Home({
 
   return (
     <div className='flex flex-col justify-center items-center'>
-      <div>
-         {/*Add Search bar filter via vendor or product name */}
-      </div>
+      <Hero />
+      <Image 
+        className='py-20'
+        src={BrakeLine} 
+        alt='brake line' 
+      />
       <ProductsList 
         list={productData} 
         searchParams={searchParams} 
