@@ -1,6 +1,6 @@
 function Footer() {
     return (
-        <footer className='bg-black text-white h-max mt-2 py-6'>
+        <footer className='bg-black text-white h-auto w-auto mt-2 py-6'>
             <div className='max-w-6xl mx-auto px-4'>
                 <p className='text-center'>&copy; {new Date().getFullYear()} Round Up Reviews. All Rights Reserved.</p>
                 <div className='flex flex-row justify-center mt-4 text-center'>
