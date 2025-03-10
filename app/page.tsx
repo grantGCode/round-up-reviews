@@ -10,7 +10,7 @@ export default async function Home({
 }: {
   searchParams: { show?: string; productId?: string };
 }) {  
-  const res = await fetch('http://localhost:3000/api/Products', {
+  const res = await fetch('/api/Products', {
     
     // cache data
     // cache: 'force-cache' 

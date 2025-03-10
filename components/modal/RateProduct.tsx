@@ -33,7 +33,7 @@ function RateProduct({
   }
 
   const submitNewRating = async (product_id: number, star_rating: number | undefined, written_comment: string | null) => {
-    const res = await fetch('http://localhost:3000/api/Reviews', {
+    const res = await fetch('/api/Reviews', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ product_id, star_rating, written_comment }),
