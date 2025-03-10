@@ -12,7 +12,7 @@ async function ProductsList({
   searchParams: productPrams,
 }) {
   
-  const res = await fetch('http://localhost:3000/api/Reviews', {
+  const res = await fetch('api/Reviews', {
     // cache data
     // cache: 'force-cache'       
     //Revalidate in 30 sec
