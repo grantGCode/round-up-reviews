@@ -14,11 +14,20 @@ async function ProductsList({
   
   const API_URL = process.env.URL;
   
-  const res = await fetch(`${API_URL}/api/Reviews`, {
-    cache: 'force-cache'
-  });
-    
-  const reviewData: productReview[] = await res.json();
+  let reviewData: productReview[] = [];
+  
+  try{
+    const res = await fetch(`${API_URL}/api/Reviews`, {
+      cache: 'force-cache'
+    });
+    if (!res.ok) {
+      console.error("Failed to fetch products:", await res.text());
+      throw new Error("Failed to fetch products");
+    }
+    reviewData = await res.json();
+  } catch (error) {
+    console.error(error);
+  }   
 
   const showModal = searchParams?.show === 'true';
 
