@@ -10,15 +10,15 @@ export default async function Home({
 }: {
   searchParams: { show?: string; productId?: string };
 }) {  
-  const res = await fetch('/api/Products', {
-    
-    // cache data
-    // cache: 'force-cache' 
-    
-    //Revalidate in 30 sec
-    next: {
-      revalidate: 30
-    }
+
+  const API_URL = process.env.URL;
+
+  if (!API_URL) {
+    throw new Error("API_URL is not defined");
+  }
+
+  const res = await fetch(`${API_URL}/api/Products`, {
+    cache: 'force-cache' 
   });
   
   const productData: productInfo[] = await res.json();

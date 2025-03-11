@@ -12,12 +12,11 @@ async function ProductsList({
   searchParams: productPrams,
 }) {
   
-  const res = await fetch('api/Reviews', {
-    // cache data
-    // cache: 'force-cache'       
-    //Revalidate in 30 sec
-      next: { revalidate: 30 }
-    });
+  const API_URL = process.env.URL;
+  
+  const res = await fetch(`${API_URL}/api/Reviews`, {
+    cache: 'force-cache'
+  });
     
   const reviewData: productReview[] = await res.json();
 
