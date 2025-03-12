@@ -65,13 +65,13 @@ async function ProductsList({
 
   return (
     <div>
-      <ul className="flex flex-wrap justify-start gap-4">
+      <ul className="flex flex-wrap justify-between gap-3">
         {list.map((product: productInfo) => (
             <li 
               className='flex flex-row justify-center items-center bg-[#FFFFFF] rounded-lg w-full sm:w-[48%] md:w-[32%] gap-3'
               key={product.id}
             >
-              <div className='flex justify-center items-center bg-[#D9D9D9] rounded-xl'>
+              <div className='flex justify-center items-center bg-[#D9D9D9] rounded-xl m-2 ml-3'>
                 <Image src={product.image_path} alt={'Product Image'} width={190} height={150} />
               </div>
               <div className='flex flex-col justify-start items-center w-[40%]'>
