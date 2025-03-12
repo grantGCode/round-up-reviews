@@ -37,7 +37,7 @@ export default async function Home({
     <div className='flex flex-col justify-center items-center'>
       <Hero />
       <Image 
-        className='py-20'
+        className='pt-5 pb-5'
         src={BrakeLine} 
         alt='brake line' 
       />
