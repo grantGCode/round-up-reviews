@@ -1,5 +1,6 @@
 'use client'
 import {useState} from 'react';
+import { useRouter } from 'next/navigation';
 import Button from '../button';
 import Image from 'next/image';
 import GrayVector from '../../public/Gray-Vector.png';
@@ -18,6 +19,8 @@ function RateProduct({
   toggleOpen: () => void
   productData: productInfo | string
 }) {
+
+  const router = useRouter();
 
   const [productName, setProductName] = useState(productData)
   const [userStarRate, setUserStarRate] = useState<number>()
@@ -39,8 +42,12 @@ function RateProduct({
       body: JSON.stringify({ product_id, star_rating, written_comment }),
     })
 
-    const data = await res.json();
-    console.log(data)
+    if (res.ok) {
+      console.log("Review submitted successfully!");
+      router.push('/'); // Redirect to "/" to close the modal
+    } else {
+      console.error("Failed to submit review:", await res.text());
+    }
   };
 
   return (
