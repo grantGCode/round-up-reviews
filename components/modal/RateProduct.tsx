@@ -63,7 +63,15 @@ function RateProduct({
         />
         <Button 
           className='p-y-6 w-full rounded-md text-bold' 
-          type='submit'
+          onClick={async () => {
+            const formData = new FormData();
+            formData.append("product_id", String(productId));
+            formData.append("star_rating", userStarRate ? String(userStarRate) : '');
+            formData.append("written_comment", userComment || '');
+        
+            await submitNewRating(formData);
+            toggleOpen();
+          }}
         >
           Submit My Review Round-Up
         </Button>

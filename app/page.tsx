@@ -12,18 +12,16 @@ export default async function Home({
 }) {  
 
   
-  const API_URL = process.env.URL;
+  // const API_URL = process.env.URL;
   
-  if (!API_URL) {
-    throw new Error("API_URL is not defined");
-  }
+  // if (!API_URL) {
+  //   throw new Error("API_URL is not defined");
+  // }
   
   let productData: productInfo[] = []
   
   try{
-    const res = await fetch(`${API_URL}/api/Products`, {
-      cache: 'force-cache' 
-    });
+    const res = await fetch(`http://localhost:3000/api/Products`, { next: { tags: [`Products`] } });
     if (!res.ok) {
       console.error("Failed to fetch products:", await res.text());
       throw new Error("Failed to fetch products");
@@ -34,7 +32,7 @@ export default async function Home({
   }
 
   return (
-    <div className='flex flex-col justify-center items-center'>
+    <div className='flex flex-col justify-center items-center h-full'>
       <Hero />
       <Image 
         className='pt-5 pb-5'

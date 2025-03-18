@@ -12,14 +12,12 @@ async function ProductsList({
   searchParams: productPrams,
 }) {
   
-  const API_URL = process.env.URL;
+  // const API_URL = process.env.URL;
   
   let reviewData: productReview[] = [];
   
   try{
-    const res = await fetch(`${API_URL}/api/Reviews`, {
-      cache: 'force-cache'
-    });
+    const res = await fetch(`http://localhost:3000/api/Reviews`, { next: { tags: [`Reviews`]} });
     if (!res.ok) {
       console.error("Failed to fetch products:", await res.text());
       throw new Error("Failed to fetch products");
@@ -76,7 +74,7 @@ async function ProductsList({
               </div>
               <div className='flex flex-col justify-start items-center w-[40%]'>
                 <h1 className='font-bold my-2'>{product.product_name}</h1>
-                <p className='my-2'>{product.vender_name}</p>
+                <p className='m-1'>{product.vender_name}</p>
                 <StarRatingMedium rating={calculateAverageRating(product.id)} />
                 <Link 
                   className='text-center my-3 px-4 py-2 w-[75%] bg-[#005FF6] text-white rounded hover:bg-blue-700'

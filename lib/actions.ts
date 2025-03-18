@@ -1,5 +1,18 @@
 'use server'
 
+import { revalidateTag, revalidatePath } from "next/cache"
+
+
+export async function revalidateProducts() {
+    revalidateTag('Products')
+
+}
+
+export async function revalidateReviews() {
+    revalidateTag('Reviews')
+    
+}
+
 export async function submitNewRating(formData: FormData): Promise<void> {
     
     const product_id = Number(formData.get("product_id"));
@@ -18,8 +31,15 @@ export async function submitNewRating(formData: FormData): Promise<void> {
         }
 
         console.log("Review submitted successfully!");
-        return await res.json()
+        const data = await res.json()
+        
+        revalidateProducts();
+        revalidateReviews();
+        revalidatePath("/");
+        
+        return data;
     } catch (error) {
         console.error("Failed to submit review:", error);
     }
+    revalidatePath('/')
   };
