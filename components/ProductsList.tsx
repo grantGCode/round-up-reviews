@@ -12,12 +12,12 @@ async function ProductsList({
   searchParams: productPrams,
 }) {
   
-  // const API_URL = process.env.URL;
+  const API_URL = process.env.URL;
   
   let reviewData: productReview[] = [];
   
   try{
-    const res = await fetch(`http://localhost:3000/api/Reviews`, { next: { tags: [`Reviews`]} });
+    const res = await fetch(`${API_URL}/api/Reviews`, { next: { tags: [`Reviews`]} });
     if (!res.ok) {
       console.error("Failed to fetch products:", await res.text());
       throw new Error("Failed to fetch products");

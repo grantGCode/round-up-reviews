@@ -15,12 +15,14 @@ export async function revalidateReviews() {
 
 export async function submitNewRating(formData: FormData): Promise<void> {
     
+    const API_URL = process.env.URL;
+
     const product_id = Number(formData.get("product_id"));
     const star_rating = formData.get("star_rating") ? Number(formData.get("star_rating")) : undefined;
     const written_comment = formData.get("written_comment") as string | null;
 
     try{
-        const res = await fetch('http://localhost:3000/api/Reviews', {
+        const res = await fetch(`${API_URL}/api/Reviews`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ product_id, star_rating, written_comment }),
