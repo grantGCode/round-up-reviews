@@ -64,9 +64,9 @@ function SeeStarRatings({
     <div onClick={toggleOpen}>
       {isOpen ? (
         <div className='flex flex-col bg-[#F3F3F3] rounded-lg my-12 w-full md:max-w-[500px] mx-auto'>
-          <div className='flex flex-row justify-stretch m-4'>
+          <div className='flex flex-row justify-center m-4 gap-16'>
               <div className='flex items-center'>
-                <div className='flex flex-col'>
+                <div className='flex flex-col gap-1'>
                   <h2 className='flex font-bold text-[#000000]' >{`${totalRating} Stars`}</h2>
                   <p className='text-[#BBB7C6]'>{`Based on ${reviewData?.length} reviews`}</p>
                 </div>
