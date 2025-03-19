@@ -43,4 +43,4 @@ export async function submitNewRating(formData: FormData): Promise<void> {
     } catch (error) {
         console.error("Failed to submit review:", error);
     }
-  };
+};

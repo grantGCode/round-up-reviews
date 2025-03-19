@@ -32,7 +32,7 @@ export default async function Home({
   }
 
   return (
-    <div className='flex flex-col justify-center items-center h-full'>
+    <div className='flex flex-col justify-center items-center'>
       <Hero />
       <Image 
         className='pt-5 pb-5'
