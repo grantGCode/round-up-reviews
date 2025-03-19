@@ -62,11 +62,11 @@ async function ProductsList({
     };
 
   return (
-    <div>
-      <ul className="flex flex-wrap justify-between gap-3">
+    <div className='flex flex-col w-[95%]'>
+      <ul className="flex flex-wrap justify-between">
         {list.map((product: productInfo) => (
             <li 
-              className='flex flex-row justify-center items-center bg-[#FFFFFF] rounded-lg w-full sm:w-[48%] md:w-[32%] gap-3'
+              className='flex flex-row justify-center items-center bg-[#FFFFFF] rounded-lg m-2 w-[98%] md:w-[47%] lg:w-[48%] xl:w-[30%] gap-4'
               key={product.id}
             >
               <div className='flex justify-center items-center bg-[#D9D9D9] rounded-xl m-2 ml-3'>
@@ -74,7 +74,7 @@ async function ProductsList({
               </div>
               <div className='flex flex-col justify-start items-center w-[40%]'>
                 <h1 className='font-bold my-2'>{product.product_name}</h1>
-                <p className='m-1'>{product.vender_name}</p>
+                <p className='my-1'>{product.vender_name}</p>
                 <StarRatingMedium rating={calculateAverageRating(product.id)} />
                 <Link 
                   className='text-center my-3 px-4 py-2 w-[75%] bg-[#005FF6] text-white rounded hover:bg-blue-700'
