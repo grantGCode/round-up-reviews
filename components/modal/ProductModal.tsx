@@ -65,7 +65,7 @@ export default function ProductModal({
 console.log(productInfo.image_path)
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-end justify-center">
-      <div className="p-8 border w-auto shadow-lg rounded-t-[3vw] bg-[#FFFFFF] overflow-y-auto max-h-[90vh]">
+      <div className="p-8 border w-full shadow-lg rounded-t-[3vw] bg-[#FFFFFF] overflow-y-auto max-h-[90vh] md:max-w-[500px] mx-auto">
         <Link href='/'>
           <Image className='mb-10' src={ArrowLeft} alt='X'></Image>
         </Link>
