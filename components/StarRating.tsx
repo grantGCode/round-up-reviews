@@ -8,7 +8,7 @@ interface StarDisplayProps {
 
 const StarDisplay: React.FC<StarDisplayProps> = ({ rating }) => {
   return (
-    <div className="flex flex-row justify-center items-center mb-5">
+    <div className="flex flex-row justify-center items-center">
       {Array.from({ length: 5 }).map((_, index) => (
         <Image
           key={index}

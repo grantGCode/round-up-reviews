@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image';
 import ProductModal from './modal/ProductModal';
 import type { productInfo, productReview, productPrams } from '../app/types/common';
-import StarRatingMedium from '../components/StarRatingMedium';
+import StarRating from './StarRating';
 
 async function ProductsList({
   list,
@@ -63,21 +63,28 @@ async function ProductsList({
 
   return (
     <div className='flex flex-col w-[95%]'>
-      <ul className="flex flex-wrap justify-between">
+      <ul className="flex flex-wrap gap-[15px]">
         {list.map((product: productInfo) => (
             <li 
-              className='flex flex-row justify-center items-center bg-[#FFFFFF] rounded-lg m-2 w-[98%] md:w-[47%] lg:w-[48%] xl:w-[30%] gap-4'
+              className='flex flex-col justify-center items-center bg-[#FFFFFF] rounded-lg w-[376px] lg:h-[580px] gap-4'
               key={product.id}
             >
+                {/* Look into object fit in tailwind */}
               <div className='flex justify-center items-center bg-[#D9D9D9] rounded-xl m-2 ml-3'>
-                <Image src={product.image_path} alt={'Product Image'} width={190} height={150} />
+                <Image src={product.image_path} alt={'Product Image'} width={329} height={150} />
               </div>
-              <div className='flex flex-col justify-start items-center w-[40%]'>
-                <h1 className='font-bold my-2'>{product.product_name}</h1>
-                <p className='my-1'>{product.vender_name}</p>
-                <StarRatingMedium rating={calculateAverageRating(product.id)} />
-                <Link 
-                  className='text-center my-3 px-4 py-2 w-[75%] bg-[#005FF6] text-white rounded hover:bg-blue-700'
+              <StarRating rating={calculateAverageRating(product.id)} />
+              <h1 className='font-bold text-[24px]'>{product.product_name}</h1>
+              <div className='flex justify-center items-center gap-4'>
+                <p className='font-bold text-sm text-16px'>{reviewData.filter((review) => review.product_id === product.id).length} Reviews</p>
+                <p className='font-bold text-sm text-16px'>{reviewData.filter((review) => review.product_id === product.id && review.written_comment).length} Comments</p>
+              </div>
+              {/* will add description later */}
+              {/* <p className='text-sm text-gray-500 text-center px-4'>{product.description}</p> */} 
+              <div className='flex flex-row justify-start items-center gap-[11px] w-[60%]'>
+                <h1 className='font-bold text-[32px]'>$XX.XX</h1>
+                <Link
+                  className='text-center flex items-center justify-center w-[153px] h-[60px] bg-[#005FF6] text-white rounded hover:bg-blue-700 text-[32px] font-bold'
                   href={`/?show=true&productId=${product.id}`}
                   key={product.id}
                   scroll={false}
