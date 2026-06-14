@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react';
 import SeeStarRatings from './SeeStarRatings';
 import SeeComments from './SeeComments';
 import RateProduct from './RateProduct';
+import NewReviewForum from './rate-form-group/NewReviewForum';
+import StarRatingsList from './star-rating-group/StarRatingsList';
+import CommentsList from './comment-group/CommentsList';
 import Image from 'next/image';
 import EmptyImage from '../../public/product-images/Empty-Image.png';
 import SmallStar from '../../public/stars/Small-Star.png'
@@ -62,40 +65,60 @@ export default function ProductModal({
   }, [myReviewData])
 
   if (productInfo === undefined) return null
-console.log(productInfo.image_path)
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-end justify-center">
-      <div className="p-8 border w-full shadow-lg rounded-t-[3vw] bg-[#FFFFFF] overflow-y-auto max-h-[90vh] md:max-w-[500px] mx-auto">
-        <Link href='/'>
-          <Image className='mb-10' src={ArrowLeft} alt='X'></Image>
-        </Link>
-        <div className='flex justify-center items-center bg-[#D9D9D9] rounded-xl'>
+    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-end md:items-center justify-center">
+      <div className="w-full max-h-[90vh] overflow-y-auto">
+        {/* Mobile version (visible on small screens) */}
+        <div className="md:hidden p-8 border w-full shadow-lg rounded-t-[3vw] bg-[#FFFFFF] overflow-y-auto mx-auto">
+          <Link href='/'>
+            <Image className='mb-10' src={ArrowLeft} alt='X'></Image>
+          </Link>
+          <div className='flex justify-center items-center bg-[#D9D9D9] rounded-xl'>
             <Image src={productInfo.image_path || EmptyImage} alt={'Product Image'} width={300} height={200} />
-        </div>
-        <div className='flex flex-col justify-center bg-[#FFFFFF]'>
-          <h5 className='mt-10 text-10'>{productInfo.vender_name}</h5>
-          <h4 className='font-bold mt-1 mb-1 text-xl'>{productInfo.product_name}</h4>
-          <div className='flex flex-row items-center gap-1'>
-            <Image className='h-5 w-5' src={SmallStar} alt='Stars' />
-            <p className='font-bold'>{`${totalRating}`}</p>
-            <p className='text-[#BBB7C6]'>{`(${reviewData?.length} reviews)`}</p>
           </div>
-          <SeeStarRatings
-            revData={reviewData ?? []}
-            isOpen={openComponent === 'ratings'}
-            toggleOpen={() => toggleComponent('ratings')}
-          />
-          <SeeComments
-            revData={reviewData ?? []}
-            isOpen={openComponent === 'comments'}
-            toggleOpen={() => toggleComponent('comments')}
-          />
-          <RateProduct
-            isOpen={openComponent === 'rate'}
-            toggleOpen={() => toggleComponent('rate')}
-            productData={productInfo.product_name}
-            productId={productInfo.id}
-          />
+          <div className='flex flex-col justify-center bg-[#FFFFFF]'>
+            <h5 className='mt-10 text-10'>{productInfo.vender_name}</h5>
+            <h4 className='font-bold mt-1 mb-1 text-xl'>{productInfo.product_name}</h4>
+            <div className='flex flex-row items-center gap-1'>
+              <Image className='h-5 w-5' src={SmallStar} alt='Stars' />
+              <p className='font-bold'>{`${totalRating}`}</p>
+              <p className='text-[#BBB7C6]'>{`(${reviewData?.length} reviews)`}</p>
+            </div>
+            <SeeStarRatings
+              revData={reviewData ?? []}
+              isOpen={openComponent === 'ratings'}
+              toggleOpen={() => toggleComponent('ratings')}
+            />
+            <SeeComments
+              revData={reviewData ?? []}
+              isOpen={openComponent === 'comments'}
+              toggleOpen={() => toggleComponent('comments')}
+            />
+            <RateProduct
+              isOpen={openComponent === 'rate'}
+              toggleOpen={() => toggleComponent('rate')}
+              productData={productInfo.product_name}
+              productId={productInfo.id}
+            />
+          </div>
+        </div>
+        {/* Desktop version (visible on md+ screens) */}
+        <div className="hidden md:block p-10 border w-full shadow-xl rounded-[2rem] bg-[#FFFFFF] overflow-y-auto max-w-[900px] mx-auto">
+          <Link href='/'>
+          <h4 className='font-bold mt-3 mb-3 text-3xl'>{productInfo.product_name}</h4>
+            <Image className='mb-10' src={ArrowLeft} alt='X'></Image>
+          </Link>
+          <div className='grid gap-3 md:grid-cols-[1.5fr_1fr] items-start'>
+            <div className='flex flex-col gap-4'>
+              <StarRatingsList revData={reviewData ?? []} />
+              <CommentsList revData={reviewData ?? []} />
+            </div>
+            <NewReviewForum
+              productId={productInfo.id}
+              productName={productInfo.product_name}
+              onSubmitComplete={() => {}}
+            />
+          </div>
         </div>
       </div>
     </div>
