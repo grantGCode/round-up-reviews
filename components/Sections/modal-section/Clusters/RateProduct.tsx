@@ -1,7 +1,7 @@
 'use client'
-import NewReviewForum from './rate-form-group/NewReviewForum';
-import ClosedReviewForum from './rate-form-group/ClosedReviewForum';
-import type {productInfo} from '../../../app/types/common'
+import NewReviewForum from '../rate-form-group/NewReviewForum';
+import ClosedReviewForum from '../rate-form-group/ClosedReviewForum';
+import type {productInfo} from '../../../../app/types/common'
 
 function RateProductToggle({
   productId,

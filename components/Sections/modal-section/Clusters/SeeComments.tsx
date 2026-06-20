@@ -1,7 +1,7 @@
 'use client'
-import CommentsList from './comment-group/CommentsList';
-import ClosedComments from './comment-group/ClosedComments';
-import type { productReview } from '../../../app/types/common';
+import CommentsList from '../comment-group/CommentsList';
+import ClosedComments from '../comment-group/ClosedComments';
+import type { productReview } from '../../../../app/types/common';
 
 function SeeComments({
   revData,

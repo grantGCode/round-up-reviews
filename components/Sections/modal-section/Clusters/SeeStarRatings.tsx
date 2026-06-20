@@ -1,7 +1,7 @@
 'use client'
-import StarRatingsList from './star-rating-group/StarRatingsList';
-import ClosedStarRatings from './star-rating-group/ClosedStarRatings';
-import type { productReview } from '../../../app/types/common'
+import StarRatingsList from '../star-rating-group/StarRatingsList';
+import ClosedStarRatings from '../star-rating-group/ClosedStarRatings';
+import type { productReview } from '../../../../app/types/common'
 
 function SeeStarRatings({
   revData,

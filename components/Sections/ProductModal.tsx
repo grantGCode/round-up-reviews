@@ -1,16 +1,15 @@
 'use client'
 import { useState, useEffect } from 'react';
-import SeeStarRatings from './modal-section/SeeStarRatings';
-import SeeComments from './modal-section/SeeComments';
-import RateProduct from './modal-section/RateProduct';
+import SeeStarRatings from './modal-section/Clusters/SeeStarRatings';
+import SeeComments from './modal-section/Clusters/SeeComments';
+import RateProduct from './modal-section/Clusters/RateProduct';
 import NewReviewForum from './modal-section/rate-form-group/NewReviewForum';
+import ModalHeader from './modal-section/Clusters/ModalHeader';
+import ProductImage from './modal-section/Clusters/ProductImage';
 import StarRatingsList from './modal-section/star-rating-group/StarRatingsList';
 import CommentsList from './modal-section/comment-group/CommentsList';
 import Image from 'next/image';
-import EmptyImage from '../../public/product-images/Empty-Image.png';
 import SmallStar from '../../public/stars/Small-Star.png'
-import Link from 'next/link';
-import ArrowLeft from '../../public/Arrow-Left-Icon.png'
 import type { productInfo, productReview } from '../../app/types/common';
 
 export default function ProductModal({ 
@@ -70,12 +69,8 @@ export default function ProductModal({
       <div className="w-full max-h-[90vh] overflow-y-auto">
         {/* Mobile version (visible on small screens) */}
         <div className="md:hidden p-8 border w-full shadow-lg rounded-t-[3vw] bg-[#FFFFFF] overflow-y-auto mx-auto">
-          <Link href='/'>
-            <Image className='mb-10' src={ArrowLeft} alt='X'></Image>
-          </Link>
-          <div className='flex justify-center items-center bg-[#D9D9D9] rounded-xl'>
-            <Image src={productInfo.image_path || EmptyImage} alt={'Product Image'} width={300} height={200} />
-          </div>
+          <ModalHeader productName={productInfo.product_name} />
+          <ProductImage imagePath={productInfo.image_path} />
           <div className='flex flex-col justify-center bg-[#FFFFFF]'>
             <h5 className='mt-10 text-10'>{productInfo.vender_name}</h5>
             <h4 className='font-bold mt-1 mb-1 text-xl'>{productInfo.product_name}</h4>
@@ -104,10 +99,7 @@ export default function ProductModal({
         </div>
         {/* Desktop version (visible on md+ screens) */}
         <div className="hidden md:block p-10 border w-full shadow-xl rounded-[2rem] bg-[#FFFFFF] overflow-y-auto max-w-[900px] mx-auto">
-          <Link href='/'>
-          <h4 className='font-bold mt-3 mb-3 text-3xl'>{productInfo.product_name}</h4>
-            <Image className='mb-10' src={ArrowLeft} alt='X'></Image>
-          </Link>
+          <ModalHeader productName={productInfo.product_name} />
           <div className='grid gap-3 md:grid-cols-[1.5fr_1fr] items-start'>
             <div className='flex flex-col gap-4'>
               <StarRatingsList revData={reviewData ?? []} />
@@ -116,6 +108,7 @@ export default function ProductModal({
             <NewReviewForum
               productId={productInfo.id}
               productName={productInfo.product_name}
+              prodImage={productInfo.image_path || ''}
               onSubmitComplete={() => {}}
             />
           </div>
