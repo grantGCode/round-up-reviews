@@ -1,6 +1,6 @@
 import Image from "next/image";
-import YellowStar from '../public/stars/Star-Yellow-Medium.png';
-import GrayStar from '../public/stars/Star-Gray-Medium.png';
+import YellowStar from '../../public/stars/Star-Yellow-Medium.png';
+import GrayStar from '../../public/stars/Star-Gray-Medium.png';
 
 interface StarDisplayProps {
   rating: number;

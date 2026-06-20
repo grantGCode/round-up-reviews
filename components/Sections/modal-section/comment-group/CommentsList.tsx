@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import StarRatingSmall from '../../StarRatingSmall';
-import type { productReview } from '../../../app/types/common';
+import StarRatingSmall from '../../../Clusters/StarRatingSmall';
+import type { productReview } from '../../../../app/types/common';
 
 function CommentsList({
   revData

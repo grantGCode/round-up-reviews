@@ -1,9 +1,9 @@
 'use client'
 import { useState } from 'react';
-import { submitNewRating } from '../../../lib/actions';
-import Button from '../../button';
-import AddStarRating from '../../AddStarRating';
-import type { productInfo } from '../../../app/types/common'
+import { submitNewRating } from '../../../../lib/actions';
+import Button from '../../../Widgets/button';
+import AddStarRating from '../../../Clusters/AddStarRating';
+import type { productInfo } from '../../../../app/types/common'
 
 function NewReviewForum({
   productId,

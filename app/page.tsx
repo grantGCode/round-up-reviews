@@ -1,5 +1,5 @@
-import Hero from '../components/Hero';
-import ProductsList from '../components/ProductsList';
+import Hero from '../components/Clusters/Hero';
+import ProductsList from '../components/Sections/ProductsList';
 import type { productInfo } from './types/common';
 
 export default async function Home({ 

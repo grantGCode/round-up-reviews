@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import GrayVector from '../../../public/Gray-Vector.png';
-import BlackStar from '../../../public/stars/Texas-Star-Black.png';
+import GrayVector from '../../../../public/Gray-Vector.png';
+import BlackStar from '../../../../public/stars/Texas-Star-Black.png';
 
 function ClosedReviewForum() {
   return (

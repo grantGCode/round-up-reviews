@@ -1,11 +1,11 @@
 'use client'
 import { useState, useEffect } from 'react';
-import SeeStarRatings from './SeeStarRatings';
-import SeeComments from './SeeComments';
-import RateProduct from './RateProduct';
-import NewReviewForum from './rate-form-group/NewReviewForum';
-import StarRatingsList from './star-rating-group/StarRatingsList';
-import CommentsList from './comment-group/CommentsList';
+import SeeStarRatings from './modal-section/SeeStarRatings';
+import SeeComments from './modal-section/SeeComments';
+import RateProduct from './modal-section/RateProduct';
+import NewReviewForum from './modal-section/rate-form-group/NewReviewForum';
+import StarRatingsList from './modal-section/star-rating-group/StarRatingsList';
+import CommentsList from './modal-section/comment-group/CommentsList';
 import Image from 'next/image';
 import EmptyImage from '../../public/product-images/Empty-Image.png';
 import SmallStar from '../../public/stars/Small-Star.png'

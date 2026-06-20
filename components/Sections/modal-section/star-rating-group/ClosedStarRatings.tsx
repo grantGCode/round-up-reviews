@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import PercentIcon from '../../../public/Percent-Icon.png';
-import GrayVector from '../../../public/Gray-Vector.png';
+import PercentIcon from '../../../../public/Percent-Icon.png';
+import GrayVector from '../../../../public/Gray-Vector.png';
 
 function ClosedStarRatings() {
   return (

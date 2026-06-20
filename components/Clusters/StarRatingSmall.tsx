@@ -1,5 +1,5 @@
 import Image from "next/image";
-import SmallStar from '../public/stars/Small-Star.png';
+import SmallStar from '../../public/stars/Small-Star.png';
 
 interface StarDisplayProps {
   rating: number;

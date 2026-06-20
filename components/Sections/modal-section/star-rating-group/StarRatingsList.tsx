@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
-import StarRating from '../../StarRating';
-import type { productReview } from '../../../app/types/common';
+import StarRating from '../../../Clusters/StarRating';
+import type { productReview } from '../../../../app/types/common';
 
 function StarRatingsList({
   revData

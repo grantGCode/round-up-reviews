@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import WordBubble from '../../../public/Word-Bubble-Icon.png';
-import GrayVector from '../../../public/Gray-Vector.png';
+import WordBubble from '../../../../public/Word-Bubble-Icon.png';
+import GrayVector from '../../../../public/Gray-Vector.png';
 
 function ClosedComments() {
   return (

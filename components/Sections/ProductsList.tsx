@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image';
-import ProductModal from './modal/ProductModal';
-import type { productInfo, productReview, productPrams } from '../app/types/common';
-import StarRating from './StarRating';
+import ProductModal from './ProductModal';
+import type { productInfo, productReview, productPrams } from '../../app/types/common';
+import StarRating from '../Clusters/StarRating';
 
 async function ProductsList({
   list,
