@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import PercentIcon from '../../../../public/Percent-Icon.png';
+// import StarRatingProgressBar from '../modal-widgets/StarRatingProgressBar';
 import type { productReview } from '../../../../app/types/common';
 
 function StarRatingsList({
@@ -11,7 +12,7 @@ function StarRatingsList({
 }) {
   const [reviewData, setReviewData] = useState<productReview[]>(revData)
   const [totalRating, setTotal] = useState<number>(0)
-  const [starCounts, setStarCounts] = useState<Record<number, number>>({ 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 });
+  // const [starCounts, setStarCounts] = useState<Record<number, number>>({ 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 });
 
   function getMostCommonStarRating(reviews: productReview[]): number {
     if (reviews.length === 0) return 0;
@@ -27,21 +28,21 @@ function StarRatingsList({
       .map(([star]) => Number(star))[0];
   }
 
-  function countStarRatings(reviews: productReview[]): Record<number, number> {
-    const starCount: Record<number, number> = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+  // function countStarRatings(reviews: productReview[]): Record<number, number> {
+  //   const starCount: Record<number, number> = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
 
-    reviews.forEach(({ star_rating }) => {
-      if (starCount[star_rating] !== undefined) {
-        starCount[star_rating] += 1;
-      }
-    });
+  //   reviews.forEach(({ star_rating }) => {
+  //     if (starCount[star_rating] !== undefined) {
+  //       starCount[star_rating] += 1;
+  //     }
+  //   });
 
-    return starCount;
-  }
+  //   return starCount;
+  // }
 
   useEffect(() => {
     setReviewData(revData)
-    setStarCounts(countStarRatings(revData))
+    // setStarCounts(countStarRatings(revData))
 
     if (revData.length > 0) {
       const mostCommonRating = getMostCommonStarRating(revData);
@@ -64,13 +65,14 @@ function StarRatingsList({
           <li className="font-bold text-sm">2 star</li>
           <li className="font-bold text-sm">1 star</li>
         </ul>
+        {/* <StarRatingProgressBar starCounts={starCounts} />
         <div className='flex flex-col gap-6 flex-grow'>
           <div className='bg-yellow-400 rounded' style={{ width: `${Math.max(starCounts[5] * 3, 20)}px`, height: '8px' }}></div>
           <div className='bg-gray-400 rounded' style={{ width: `${Math.max(starCounts[4] * 3, 20)}px`, height: '8px' }}></div>
           <div className='bg-gray-400 rounded' style={{ width: `${Math.max(starCounts[3] * 3, 20)}px`, height: '8px' }}></div>
           <div className='bg-gray-400 rounded' style={{ width: `${Math.max(starCounts[2] * 3, 20)}px`, height: '8px' }}></div>
           <div className='bg-gray-400 rounded' style={{ width: `${Math.max(starCounts[1] * 3, 20)}px`, height: '8px' }}></div>
-        </div>
+        </div> */}
         <div className='flex items-center justify-center flex-shrink-0'>
           <div className='flex flex-col gap-1 text-center'>
             <h2 className='font-bold text-2xl'>{`${totalRating}/5`}</h2>

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { submitNewRating } from '../../../../lib/actions';
 import Button from '../../../Widgets/button';
 import AddStarRating from '../../../Clusters/AddStarRating';
-import ProductImage from '../Clusters/ProductImage';
+import ProductImage from '../modal-clusters/ProductImage';
 import type { productInfo } from '../../../../app/types/common'
 
 function NewReviewForum({
