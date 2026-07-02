@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image';
-import ProductModal from './ProductModal';
+import ProductModal from './ProductModal-Section';
 import type { productInfo, productReview, productPrams } from '../../app/types/common';
 import StarRating from '../Clusters/StarRating';
 
