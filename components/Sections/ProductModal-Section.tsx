@@ -30,7 +30,7 @@ export default function ProductModal({
       setOpenComponent(componentName);
     }
   }
-  
+  //Check formula locic write a simple MEAN formula to get the avg star rating.
   function getMostCommonStarRating(reviews: productReview[]): number {
     if (reviews.length === 0) return 0; // Default if there are no reviews
   

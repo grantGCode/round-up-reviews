@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image';
+import CardsProductImage from './modal-section/modal-clusters/ProductImage';
 import ProductModal from './ProductModal-Section';
 import type { productInfo, productReview, productPrams } from '../../app/types/common';
 import StarRating from '../Clusters/StarRating';
@@ -70,9 +70,7 @@ async function ProductsList({
               key={product.id}
             >
                 {/* Look into object fit in tailwind */}
-              <div className='flex justify-center items-center bg-[#D9D9D9] rounded-xl m-2 ml-3'>
-                <Image src={product.image_path} alt={'Product Image'} width={329} height={150} />
-              </div>
+              <CardsProductImage imagePath={product.image_path} />
               <StarRating rating={calculateAverageRating(product.id)} />
               <h1 className='font-bold text-[24px]'>{product.product_name}</h1>
               <div className='flex justify-center items-center gap-4'>
