@@ -1,8 +1,9 @@
 import Link from 'next/link'
-import CardsProductImage from './modal-section/modal-clusters/ProductImage';
+import ProductImage from './modal-section/modal-clusters/ProductImage';
 import ProductModal from './ProductModal-Section';
 import type { productInfo, productReview, productPrams } from '../../app/types/common';
 import StarRating from '../Clusters/StarRating';
+import ProductReviewStats from './product-list-section/ProductReviewStats';
 
 async function ProductsList({
   list,
@@ -70,13 +71,13 @@ async function ProductsList({
               key={product.id}
             >
                 {/* Look into object fit in tailwind */}
-              <CardsProductImage imagePath={product.image_path} />
+              <ProductImage imagePath={product.image_path} width={329} height={150} />
               <StarRating rating={calculateAverageRating(product.id)} />
               <h1 className='font-bold text-[24px]'>{product.product_name}</h1>
-              <div className='flex justify-center items-center gap-4'>
-                <p className='font-bold text-sm text-16px'>{reviewData.filter((review) => review.product_id === product.id).length} Reviews</p>
-                <p className='font-bold text-sm text-16px'>{reviewData.filter((review) => review.product_id === product.id && review.written_comment).length} Comments</p>
-              </div>
+              <ProductReviewStats
+                reviewCount={reviewData.filter((review) => review.product_id === product.id).length}
+                commentCount={reviewData.filter((review) => review.product_id === product.id && review.written_comment).length}
+              />
               {/* will add description later */}
               {/* <p className='text-sm text-gray-500 text-center px-4'>{product.description}</p> */} 
               <div className='flex flex-row justify-start items-center gap-[11px] w-[60%]'>
