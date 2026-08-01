@@ -11,6 +11,7 @@ import CommentsList from './modal-section/comment-group/CommentsList';
 import Image from 'next/image';
 import SmallStar from '../../public/stars/Small-Star.png'
 import type { productInfo, productReview } from '../../app/types/common';
+import { getAvgStarRating } from '../../lib/reviewStats';
 
 export default function ProductModal({ 
   productInfo,
@@ -21,7 +22,7 @@ export default function ProductModal({
 }) {
   
   const [reviewData, setReviewData] = useState<productReview[]>()
-  const [totalRating, setTotal ] = useState<number>()
+  const [totalRating, setTotal ] = useState<number>(0)
 
   const [openComponent, setOpenComponent] = useState<string>('rate');
 
@@ -30,28 +31,11 @@ export default function ProductModal({
       setOpenComponent(componentName);
     }
   }
-  //Check formula locic write a simple MEAN formula to get the avg star rating.
-  function getMostCommonStarRating(reviews: productReview[]): number {
-    if (reviews.length === 0) return 0; // Default if there are no reviews
-  
-    const starCount: Record<number, number> = {};
-  
-    // Count occurrences of each star rating
-    reviews.forEach(({ star_rating }) => {
-      starCount[star_rating] = (starCount[star_rating] || 0) + 1;
-    });
-  
-    // Find the most common star rating
-    return Object.entries(starCount)
-      .sort((a, b) => b[1] - a[1]) // Sort by frequency (descending)
-      .map(([star]) => Number(star))[0]; // Return the most common rating
-    }
-
   useEffect(() => {
     setReviewData(myReviewData)
     
     if(myReviewData.length > 0) {
-      const mostCommonRating = getMostCommonStarRating(myReviewData);
+      const mostCommonRating = getAvgStarRating(myReviewData);
       setTotal(mostCommonRating);
     }
 

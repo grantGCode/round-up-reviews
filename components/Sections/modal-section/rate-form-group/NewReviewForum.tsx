@@ -44,7 +44,6 @@ function NewReviewForum({
         className={`my-4 bg-[#D9D9D9] w-full p-4 rounded-[2vw] resize-none overflow-y-auto h-32 text-left placeholder:text-center focus:placeholder:text-left`}
         name='written_comment'
         placeholder='Leave a comment (optional)'
-        required
         autoCapitalize='off'
         autoCorrect='off'
         maxLength={280}

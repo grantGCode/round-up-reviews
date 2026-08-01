@@ -3,6 +3,7 @@ import ProductImage from './modal-section/modal-clusters/ProductImage';
 import ProductModal from './ProductModal-Section';
 import type { productInfo, productReview, productPrams } from '../../app/types/common';
 import StarRating from '../Clusters/StarRating';
+import { getAvgStarRating } from '../../lib/reviewStats';
 import ProductReviewStats from './product-list-section/ProductReviewStats';
 
 async function ProductsList({
@@ -32,35 +33,7 @@ async function ProductsList({
 
   const selectedProduct = list.find((product: productInfo) => product.id.toString() === searchParams?.productId);
   
-  const product = list.filter((product: productInfo) => 
-    {product
-      if(product.id === selectedProduct?.id){
-        return product
-      }
-    })
-
-  const reviewFilter = reviewData.filter((reviews: productReview) => 
-    {reviews
-      if(reviews.product_id === selectedProduct?.id){
-        return reviews
-      }
-    })
-
-  const calculateAverageRating = (productId: number): number => {
-    const productReviews = reviewData.filter((review) => review.product_id === productId);
-    if (productReviews.length === 0) return 0; // No reviews yet
-
-    const starCount: Record<number, number> = {};
-
-    // Count occurrences of each star rating
-    productReviews.forEach(({ star_rating }) => {
-      starCount[star_rating] = (starCount[star_rating] || 0) + 1;
-    });
-
-    return Object.entries(starCount)
-      .sort((a, b) => b[1] - a[1]) // Sort by frequency (descending)
-      .map(([star]) => Number(star))[0]; // Return the most common rating
-    };
+  const reviewFilter = reviewData.filter((reviews: productReview) => reviews.product_id === selectedProduct?.id)
 
   return (
     <div className='flex flex-col w-[95%]'>
@@ -72,11 +45,11 @@ async function ProductsList({
             >
                 {/* Look into object fit in tailwind */}
               <ProductImage imagePath={product.image_path} width={329} height={150} />
-              <StarRating rating={calculateAverageRating(product.id)} />
+              <StarRating rating={getAvgStarRating(reviewData.filter((r) => r.product_id === product.id))} />
               <h1 className='font-bold text-[24px]'>{product.product_name}</h1>
               <ProductReviewStats
                 reviewCount={reviewData.filter((review) => review.product_id === product.id).length}
-                commentCount={reviewData.filter((review) => review.product_id === product.id && review.written_comment).length}
+                commentCount={reviewData.filter((review) => review.product_id === product.id && review.written_comment && review.written_comment.trim() !== '').length}
               />
               {/* will add description later */}
               {/* <p className='text-sm text-gray-500 text-center px-4'>{product.description}</p> */} 
@@ -99,7 +72,7 @@ async function ProductsList({
         selectedProduct &&
         <ProductModal 
           myReviewData={reviewFilter}
-          productInfo={product[0]} 
+          productInfo={selectedProduct} 
       />}
     </div>
   )
