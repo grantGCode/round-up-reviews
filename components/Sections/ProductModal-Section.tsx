@@ -56,7 +56,7 @@ export default function ProductModal({
           <ModalHeader productName={productInfo.product_name} />
           <ProductImage imagePath={productInfo.image_path} />
           <div className='flex flex-col justify-center bg-[#FFFFFF]'>
-            <h5 className='mt-10 text-10'>{productInfo.vender_name}</h5>
+            <h5 className='mt-10 text-10'>{productInfo.vendor_name}</h5>
             <h4 className='font-bold mt-1 mb-1 text-xl'>{productInfo.product_name}</h4>
             <div className='flex flex-row items-center gap-1'>
               <Image className='h-5 w-5' src={SmallStar} alt='Stars' />

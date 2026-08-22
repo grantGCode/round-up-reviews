@@ -6,7 +6,7 @@ export type SearchParamProps = {
 export type productInfo = {
   id: number;
   product_name: string;
-  vender_name: string;
+  vendor_name: string;
   image_path: string;
 };
 
@@ -15,7 +15,7 @@ export type productReview = {
   product_name: string;
   product_id: number;
   star_rating: number;
-  vender_name: string;
+  vendor_name: string;
   written_comment: string | null;
 };
 
