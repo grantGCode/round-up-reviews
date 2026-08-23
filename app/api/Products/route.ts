@@ -4,7 +4,7 @@ import db from "../../../db/db";
 export async function GET() {
     const productDetails = await new Promise((resolve, reject) => {
         const sql = `SELECT 
-                product.id, product.product_name, vendor.vendor_name, image_path
+                product.id, product.product_name, vendor.vendor_name, image_path, product.price
                 FROM product
                 INNER JOIN vendor
                 ON product.vendor_id = vendor.id;`

@@ -54,7 +54,7 @@ async function ProductsList({
               {/* will add description later */}
               {/* <p className='text-sm text-gray-500 text-center px-4'>{product.description}</p> */} 
               <div className='flex flex-row justify-start items-center gap-[11px] w-[60%]'>
-                <h1 className='font-bold text-[32px]'>$XX.XX</h1>
+                <h1 className='font-bold text-[32px]'>{product.price !== null && product.price !== undefined && product.price !== '' ? `$${Number(product.price).toFixed(2)}` : 'No Price'}</h1>
                 <Link
                   className='text-center flex items-center justify-center w-[153px] h-[60px] bg-[#005FF6] text-white rounded hover:bg-blue-700 text-[32px] font-bold'
                   href={`/?show=true&productId=${product.id}`}

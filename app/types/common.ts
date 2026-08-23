@@ -8,6 +8,7 @@ export type productInfo = {
   product_name: string;
   vendor_name: string;
   image_path: string;
+  price: number | string | null;
 };
 
 export type productReview = {
