@@ -43,8 +43,7 @@ async function ProductsList({
               className='flex flex-col justify-center items-center bg-[#FFFFFF] rounded-lg w-[376px] lg:h-[580px] gap-4'
               key={product.id}
             >
-                {/* Look into object fit in tailwind */}
-              <ProductImage imagePath={product.image_path} width={329} height={150} />
+              <ProductImage imagePath={product.image_path} width={329} height={250} />
               <StarRating rating={getAvgStarRating(reviewData.filter((r) => r.product_id === product.id))} />
               <h1 className='font-bold text-[24px]'>{product.product_name}</h1>
               <ProductReviewStats

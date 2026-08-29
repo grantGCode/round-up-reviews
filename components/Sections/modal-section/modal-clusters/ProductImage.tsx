@@ -15,13 +15,16 @@ function ProductImage({
   imageClassName?: string
 }) {
   return (
-    <div className={`flex justify-center items-center bg-[#D9D9D9] rounded-xl ${className}`.trim()}>
+    <div
+      className={`relative flex justify-center items-center bg-[#D9D9D9] rounded-xl overflow-hidden ${className}`.trim()}
+      style={{ width, height }}
+    >
       <Image
-        className={imageClassName}
+        className={`object-contain ${imageClassName}`.trim()}
         src={imagePath || EmptyImage}
         alt={'Product Image'}
-        width={width}
-        height={height}
+        fill
+        sizes={`${width}px`}
       />
     </div>
   )
